@@ -25,12 +25,12 @@ from .utils import is_valid_phone_number, handle_referral, add_daily_login_rewar
 
 
 cg = CoinGeckoAPI()
-site_name = getattr(settings, 'SITE_NAME', 'Luckyquestmall')
+site_name = getattr(settings, 'SITE_NAME', 'luckyquest')
 no_reply_email = getattr(settings, 'APPLICATION_EMAIL', 'Trust Safe Incorporation <no_reply@trustsafeinc.com>')
 website_logo = getattr(settings, 'WEBSITE_LOGO', 'https://iili.io/dkpvy8P.png')
-support_email = getattr(settings, 'SUPPORT_EMAIL', 'support@luckyquestmall.com')
-admin_email = getattr(settings, 'ADMIN_EMAIL', 'admin@luckyquestmall.com')
-support_mail = 'support@luckyquestmall.com'
+support_email = getattr(settings, 'SUPPORT_EMAIL', 'support@luckyquest.com')
+admin_email = getattr(settings, 'ADMIN_EMAIL', 'admin@luckyquest.com')
+support_mail = 'support@luckyquest.com'
 
 
 
@@ -63,7 +63,7 @@ def generate_qr_code(request):
 
 
 def home(request):
-    user = User.objects.get(username="admin@luckyquestmall.com")
+    user = User.objects.get(username="admin@luckyquest.com")
     social_link = WebsiteSocialLink.objects.get(host=user)
     telegram_channel = social_link.telegram_channel
     telegram_customer_service = social_link.telegram_customer_service
@@ -247,7 +247,7 @@ def process_deposit(request, transaction_id):
     transaction = get_object_or_404(Transaction, transaction_id=transaction_id)
     domain_name = request.get_host()
     network = request.GET.get('network')
-    site_user  = User.objects.get(username='admin@luckyquestmall.com')
+    site_user  = User.objects.get(username='admin@luckyquest.com')
     site_wallet = AllAdminWallets.objects.get(admin_account=site_user)
 
     wallet = CurrentSiteWallet.objects.get(wallet=site_wallet)
@@ -281,7 +281,6 @@ def submit_payment_proof(request):
 def update_invoice_status(request):
     if request.method == "POST":
         transaction_id = request.POST.get('transaction_id')
-        print(transaction_id)
         transaction = get_object_or_404(Transaction, transaction_id=transaction_id)
         transaction.status = 'Failed'
         transaction.save()
@@ -485,7 +484,6 @@ def filter_withdrawal_by_status(request):
         withdrawal = {'amount': intcomma(i.amount), 'status': i.status, 'date': i.date.strftime("%b. %d, %Y, %I:%M %p").replace("PM", "p.m.").replace("am", "a.m."), 'transaction_id': i.transaction_id}
         withdrawals.append(withdrawal)
 
-    print(withdrawals)
     return JsonResponse({'withdrawals': withdrawals}, status=200)
 
 
@@ -712,7 +710,7 @@ def read_notifications(request):
 
 @login_required
 def redeem_gift(request):
-    user = User.objects.get(username="admin@luckyquestmall.com")
+    user = User.objects.get(username="admin@luckyquest.com")
     social_link = WebsiteSocialLink.objects.get(host=user)
     telegram_channel = social_link.telegram_channel
 
@@ -767,7 +765,6 @@ def team_report(request):
     current_date = today.strftime("%Y-%m-%d")
     referrals = Referral.objects.filter(referred_by=user)
 
-    print(referrals)
     try:
         total_earnings = referrals.first().get_overall_earnings(user=user)
     except:
@@ -1023,7 +1020,6 @@ def feedback(request):
 @login_required
 def send_feedback(request):
     message = request.GET.get('feedback')
-    print(support_email)
     send_mail(f"Feedback from {request.user}", message, f'{request.user}', [support_email])
     return JsonResponse({}, status=200)
 
@@ -1040,7 +1036,6 @@ def about(request):
 
 def privacy_agreement(request):
     domain_name = 'https://' + request.get_host()
-    print(domain_name)
     return render(request, 'account/privacy_agreement.html', {
         'domain_name': domain_name
     })

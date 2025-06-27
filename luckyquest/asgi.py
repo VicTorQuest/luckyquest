@@ -1,5 +1,5 @@
 """
-ASGI config for luckyquestmall project.
+ASGI config for luckyquest project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'luckyquestmall.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'luckyquest.settings')
 
 application = get_asgi_application()

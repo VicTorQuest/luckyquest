@@ -92,43 +92,47 @@ class Transaction(models.Model):
                 UserNotification.objects.create(user=self.user, notification_type='DEPOSIT', message=f"Your recharge deposit of ${amount} was successful")
 
                 if self.user.vip_deposit == False:
-                    print("starting the coommision")
-                    referred_user = Referral.objects.get(user=self.user)
-                    parent_user = referred_user.referred_by
+                    try:
+                        print("starting the coommision")
+                        referred_user = Referral.objects.get(user=self.user)
+                        print(referred_user)
+                        parent_user = referred_user.referred_by
+                        print(parent_user)
+                        parent_referral = Referral.objects.get(user=parent_user)
+                        referred_user_level = self.user.wallet.level
 
-                    parent_referral = Referral.objects.get(user=parent_user)
-                    referred_user_level = self.user.wallet.level
+                        print(referred_user_level)
+                        if referred_user_level == 'VIP 1':
+                            commission = (Decimal(10) / Decimal(100)) * self.amount
+                            commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)   
+                        elif referred_user_level == 'VIP 2':
+                            commission = (Decimal(3) / Decimal(100)) * self.amount
+                            commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                        elif referred_user_level == 'VIP 3':
+                            commission = (Decimal(1) / Decimal(100)) * self.amount
+                            commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                        else:
+                            commission = None
+                        
 
-                    print(referred_user_level)
-                    if referred_user_level == 'VIP 1':
-                        commission = (Decimal(10) / Decimal(100)) * self.amount
-                        commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)   
-                    elif referred_user_level == 'VIP 2':
-                        commission = (Decimal(3) / Decimal(100)) * self.amount
-                        commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-                    elif referred_user_level == 'VIP 3':
-                        commission = (Decimal(1) / Decimal(100)) * self.amount
-                        commission = commission.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-                    else:
-                        commission = None
-                    
+                        if commission:
 
-                    if commission:
+                            parent_referral.total_vip_deposits += 1
+                            parent_referral.total_vip_deposit_amount += commission
+                            parent_referral.total_referral_bonus += commission
+                            parent_referral.vip_depositors.add(self.user)
+                            parent_referral.save()
 
-                        parent_referral.total_vip_deposits += 1
-                        parent_referral.total_vip_deposit_amount += commission
-                        parent_referral.total_referral_bonus += commission
-                        parent_referral.vip_depositors.add(self.user)
-                        parent_referral.save()
+                            print("added the coommision")
 
-                        print("added the coommision")
-
-                        UserNotification.objects.create(user=parent_user, notification_type="REFERRAL NOTIFICATION", message=f"You made a commission of ${commission} from uid:{self.user.wallet.uid}")
-                        ReferralBonus.objects.create(referral=referred_user, referral_bonus=commission, bonus_type='DEPOSIT COMMISSION')
-                        print('saving')
-                        self.user.vip_deposit = True
-                        self.user.save()
-                        print('saved')
+                            UserNotification.objects.create(user=parent_user, notification_type="REFERRAL NOTIFICATION", message=f"You made a commission of ${commission} from uid:{self.user.wallet.uid}")
+                            ReferralBonus.objects.create(referral=referred_user, referral_bonus=commission, bonus_type='DEPOSIT COMMISSION')
+                            print('saving')
+                            self.user.vip_deposit = True
+                            self.user.save()
+                            print('saved')
+                    except:
+                        pass
 
                     
 
