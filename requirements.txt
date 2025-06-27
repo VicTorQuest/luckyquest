@@ -9,8 +9,10 @@ Django==5.0.14
 django-phonenumber-field==7.3.0
 django-social-share==2.3.0
 django-storages==1.14.4
+gunicorn==23.0.0
 idna==3.10
 jmespath==1.0.1
+packaging==25.0
 phonenumbers==8.13.38
 pillow==10.4.0
 pycoingecko==2.2.0
