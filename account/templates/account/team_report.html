@@ -1,0 +1,245 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/team_report.css' %}">
+{% endblock css %}
+{% block header %}
+<div class="modal fade" id="uidInfoModal" tabindex="-1" aria-labelledby="uidInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="uidInfoModalLabel">UID: </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="uidBody" >
+          <div class="uid-info">
+            <div>Referrals <span>1</span></div>
+            <div>Vip deposits <span>0.00</span></div>
+            <div>Current level <span><span class="badge tier-1"><i class="bi bi-star-fill me-1"></i>Tier 1</span></span></div>
+            <div>Total bonus <span>2</span></div>
+            <div>Date joined  <span>23-8-2024</span></div>
+          </div>
+
+          <div class="bonus-history mt-4">
+            <h6 class="text-center">Bonus history</h6>
+
+            <div class="history mb-2 mt-4">
+               
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">ok</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="sortLevelModal" tabindex="-1" aria-labelledby="sortLevelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id=""> </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-0" id="" >
+            <ul class="levels mt-4">
+                <li class="vip selected" onclick="filterByLevel('All')">All</li>
+                <li class="vip" onclick="filterByLevel('VIP 1')">VIP 1</li>
+                <li class="vip" onclick="filterByLevel('VIP 2')">VIP 2</li>
+                <li class="vip" onclick="filterByLevel('VIP 3')">VIP 3</li>
+                <li class="vip" onclick="filterByLevel('VIP 4')">VIP 4</li>
+                <li class="vip" onclick="filterByLevel('VIP 5')">VIP 5</li>
+                <li class="vip" onclick="filterByLevel('VIP 6')">VIP 6</li>
+                <li class="vip" onclick="filterByLevel('VIP 7')">VIP 7</li>
+                <li class="vip" onclick="filterByLevel('VIP 8')">VIP 8</li>
+                <li class="vip" onclick="filterByLevel('VIP 9')">VIP 9</li>
+                <li class="vip" onclick="filterByLevel('VIP 10')">VIP 10</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="sortDateModal" tabindex="-1" aria-labelledby="sortDateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="">Select date</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-0" style="height: 250px;" id="" >
+          <div class="custom-date-picker mt-4">
+            <div class="dropdown">
+              <div class="dropdown-label" id="selectedYear">Year</div>
+              <ul id="year" class="dropdown-list"></ul>
+            </div>
+            <div class="dropdown">
+              <div class="dropdown-label" id="selectedMonth">Month</div>
+              <ul id="month" class="dropdown-list"></ul>
+            </div>
+            <div class="dropdown">
+                <div class="dropdown-label" id="selectedDay">Day</div>
+                <ul id="day" class="dropdown-list"></ul>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="filterByDate()">Confrim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<header class="header">
+    <nav class="top-navbar">
+  
+      <a class="logo-area" href="{% url 'home' %}">     
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </a>
+  
+    <div class="support-container" id="supportIcon">
+        <i class="bi bi-headset"></i> Support
+    </div>
+    </nav>
+  
+    <div class="header-text-container">
+      <h1 class="header-text">Team <span>report</span>
+    </div>
+  
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="search-container">
+    <div class="container">
+        <div class="search">
+            <input type="search" name="" class="shadow" placeholder="Search for referral UIDs" id="searchInput">
+            <button class="search-icon" id="searchBtn">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="filter-container">
+    <div class="container">
+        <div class="filters">
+            <div class="shadow filter-by-level" id="filterByLevel">
+                <p class="mb-0" id="selectedLevel">All</p>
+                <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="shadow filter-by-date" id="filterByDate">
+                <p class="mb-0" id="selectedDate">{{current_date}}</p>
+                <i class="bi bi-chevron-down"></i>  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="report-container">
+    <div class="container">
+        <div class="report">
+            <div class="line-1">
+                <div class="left">
+                    <p>{{request.user.referral.total_referrals}}</p>
+                    <div>Referral number</div>    
+                </div>
+
+                <div class="right">
+                    <p>${{request.user.referral.total_referral_bonus|intcomma|floatformat:2}}</p> 
+                    <div>Referral bonus</div>    
+                </div>
+            </div>
+            <div class="line-2">
+                <div class="left">
+                    <p>{{request.user.referral.total_vip_deposits}}</p> 
+                    <div>Deposit number</div>    
+                </div>
+
+                <div class="right">
+                    <p>${{total_earnings}}</p>
+                    <div>My overall earnings</div>    
+                </div>
+            </div>
+            <div class="line-3">
+                <div class="left mb-0">
+                    <p>{{request.user.referral.vip_depositors.count}}</p> 
+                    <div class="mb-0"><i class="bi bi-info-circle me-1" data-bs-toggle="tooltip" data-bs-title="Total number of your referrals making vip deposits"></i> Vip deposits</div>    
+                </div>
+
+                <div class="right mb-0">
+                    <p>${{request.user.referral.total_vip_deposit_amount|intcomma|floatformat:2}}</p></p>
+                    <div class="mb-0"><i class="bi bi-info-circle me-1" data-bs-toggle="tooltip" data-bs-title="Total vip deposits amount"></i> Vip deposits amount</div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="team-report-comtainer">
+    <div class="container">
+        <div class="team-report">
+            {% if referrals %}
+            <div class="table-responsive">
+                <table class="table table-hover referral-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">UID</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Bonus</th>
+                        <th scope="col">Date Joined</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for referral in referrals %}
+                        <tr onclick="uidInfo('{{referral.user.wallet.uid}}')">
+                          <th scope="row">{{referral.user.wallet.uid}}</th>
+                          <td><span class="badge {{referral.user.wallet.slug}}"><i class="bi bi-star-fill me-1"></i>{{referral.user.wallet.level}}</span></td>
+                          <td>${{referral.get_total_upline_bonuses|floatformat:2|intcomma}}</td>
+                          <td>{{referral.user.date_joined|date:"M d Y"}}</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+            {% else %}
+            <div class="text-center empty">
+                <div class="no-records">
+                  <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                  <p class="mt-2">no data</p>
+                </div>
+                <div class="space">
+      
+                </div>
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'account/js/team_report.js' %}"></script>
+<script src="{% static 'account/js/date_filter.js' %}"></script>
+
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+{% endblock scripts %}

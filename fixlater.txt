@@ -1,0 +1,1 @@
+add transaction with view all transaction in wallet page, then create a new page for all transactions

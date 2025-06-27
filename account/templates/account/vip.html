@@ -1,0 +1,545 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/vip.css' %}">
+{% endblock css %}
+{% block header %}
+<header class="header">
+    <nav class="top-navbar">
+        <div>
+            <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+        </div>
+
+        <div class="title">
+            VIP
+        </div>
+
+        <h2 style="width: 25px;"></h2>
+    </nav>
+
+    <div class="user-info container">
+        <div class="user-icon">
+            <i class="bi bi-person-fill"></i>
+        </div>
+        <div class="ms-3 right">
+            <span class="badge {{request.user.wallet.slug}}"><i class="bi bi-star-fill me-1"></i>{{request.user.wallet.level}}</span>
+            <p class="username mt-2">{{request.user.username}}</p>
+        </div>
+    </div>
+
+    <div class="statistics">
+        <div class="left shadow">
+            <p class="balance">${{request.user.wallet.balance|floatformat:2|intcomma}}</p>
+            <p>My balance</p>
+        </div>
+
+        <div class="right shadow">
+            <p>0 date</p>
+            <p>Payout time</p>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="mt-5">
+    <div class="container">
+        <p class="reward-info mb-0">VIP level rewards are settled at 12:00 am on the 1st of every month</p>
+    </div>
+</div>
+
+
+<div class="vip-container">
+    <div class="container">
+        <div class="vips owl-carousel owl-theme">
+
+            <div class="vip vip1 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown-vip1.webp' %}">
+                            <h1 class="level1">VIP1</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP1 requires 3000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-1.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP1</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/3000</span>
+                        <span>3000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vip vip2 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level2">VIP2</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP2 requires 30000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-2.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP2</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/30000</span>
+                        <span>30000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="vip vip3 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level3">VIP3</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP3 requires 400000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-3.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP3</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/400000</span>
+                        <span>400000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="vip vip4 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level4">VIP4</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP4 requires 4000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-4.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP4</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/4000000</span>
+                        <span>4000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="vip vip5 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level5">VIP5</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP5 requires 20000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-5.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP5</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/20000000</span>
+                        <span>20000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="vip vip6 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level6">VIP6</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP6 requires 80000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-6.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP6</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/80000000</span>
+                        <span>80000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="vip vip7 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level7">VIP7</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP7 requires 300000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-7.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP7</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/300000000</span>
+                        <span>300000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="vip vip8 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level8">VIP8</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP8 requires 1000000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-8.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP8</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/1000000000</span>
+                        <span>1000000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="vip vip9 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level9">VIP9</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP9 requires 5000000000EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-9.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP9</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/5000000000</span>
+                        <span>5000000000 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="vip vip10 item">
+                <div class="top">
+                    <div class="left" >
+                        <div class="first">
+                            <img class="crown" src="{% static 'account/img/crown.webp' %}">
+                            <h1 class="level10">VIP10</h1>
+                            <img class="locked" src="{% static 'account/img/locked.webp' %}">
+                            <p class="text" >Not open yet</p>
+                        </div>
+                        <div class="second">Upgrading VIP10 requires 9999999999EXP</div>
+                        <div class="third">Rate $1=1EXP</div>
+
+                    </div>
+                    <div class="right">
+                        <img src="{% static 'account/img/vip-10.webp' %}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="text-end">VIP10</div>
+                    <div class="progress"></div>
+                    <div class="mt-1 d-flex justify-content-between">
+                        <span class="pill">0/9999999999</span>
+                        <span>9999999999 EXP can be leveled up</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="class-benefit-container">
+    <div class="container">
+        <div class="class-benefit">
+            <h2><span class="icon-area me-2"><i class="bi bi-gem"></i></span> Class Benefits</h2>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-gift-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Upgrade Package</h3>
+                    <span>Each account can only receive one time</span>
+                </div>
+
+                <div>
+                    <p class="mb-1" id="packageUpgrade"><span class="mini-icons me-2"><i class="bi bi-wallet2"></i></span> 60</p>
+                    <p class="mb-0"><span class="mini-icons me-2"><i class="bi bi-gem"></i> </span> 0</p>
+                </div>
+            </div>
+
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-coin"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Daily Reward</h3>
+                    <span>Each account can only receive once after login</span>
+                </div>
+
+                <div>
+                    <p class="mb-1" id="rewardMonthly"><span class="mini-icons me-2"><i class="bi bi-wallet2"></i></span> 2.5</p>
+                    <p class="mb-0"><span class="mini-icons me-2"><i class="bi bi-gem"></i></span>0</p>
+                </div>
+            </div>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Deposit Reward</h3>
+                    <span>Get rewards every time you deposit</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0"><span class="max-icons me-2"><i class="bi bi-wallet2"></i></span>0%</p>
+                </div>
+            </div>
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-safe2-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Safe</h3>
+                    <span>Increase the extra income of the safe</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0" id="safe"><span class="max-icons me-2"><i class="bi bi-safe-fill"></i></span>0.2%</p>
+                </div>
+            </div>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-currency-exchange"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Recharge rate</h3>
+                    <span>Increase your income of rebate</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0" id="rateRecharge"><span class="max-icons me-2"><i class="bi bi-cash"></i></span>0.6%</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="records-and-rules">
+    <div class="container">
+        <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-record-tab" data-bs-toggle="pill" data-bs-target="#pills-record" type="button" role="tab" aria-controls="pills-record" aria-selected="true">record</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-rules-tab" data-bs-toggle="pill" data-bs-target="#pills-rules" type="button" role="tab" aria-controls="pills-rules" aria-selected="false">rules</button>
+            </li>
+     
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-record" role="tabpanel" aria-labelledby="pills-record-tab" tabindex="0">
+                <div class="text-center empty">
+                    <div class="no-records">
+                      <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                      <p class="mt-2 mb-0">no data</p>
+                    </div>
+                    <div class="space">
+          
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade rules" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab" tabindex="0">
+                <h4 class="text-center">VIP Privilege</h4>
+                <p class="text-center">VIP rules descriptions</p>
+
+                <div class="tip">
+                    <div class="title">
+                        Upgrade standard
+                    </div>
+        
+        
+                    <p>The VIP member's experience points if it meet the criteria for a specific rank will result in a promotion to the corresponding VIP level. The member's VIP data tracking begins at 00:00:00 on the day the VIP system is launched. VIP level calculations are updated every 24hrs, with experience points calculated at a 1:1 ratio based on valid odds!</p>
+        
+                </div>
+
+                <div class="tip">
+                    <div class="title">
+                        Upgrade order
+                    </div>
+        
+        
+                    <p>The VIP level that meets the corresponding requirements can be promoted by one level every day, but the VIP level cannot be promoted by leapfrogging.</p>
+        
+                </div>
+
+
+
+                <div class="tip">
+                    <div class="title">
+                        Upgrade bonus
+                    </div>
+        
+        
+                    <p>The upgrade benefits can be claimed on the VIP page after the member reaches the VIP membership level, and each VIP member can only get the upgrade reward of each level once.</p>
+        
+                </div>
+
+
+                <div class="tip">
+                    <div class="title">
+                        Deposit reward
+                    </div>
+        
+        
+                    <p>The higher the VIP level, the higher the return rate, all the games are calculated in real time and can be self-rewarded!</p>
+        
+                </div>
+
+
+                <div class="tip mb-0">
+                    <div class="title">
+                        Safe
+                    </div>
+        
+        
+                    <p>VIP members who have reached the corresponding level will get additional benefits on safe deposit based on the member's VIP level.</p>
+        
+                </div>
+
+            </div>
+
+
+
+          </div>
+    </div>
+</div>s
+{% endblock content %}
+{% block scripts %}
+<script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    items: 2,
+    autoWidth:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
+        }
+    }
+})
+
+</script>
+<script src="{% static 'account/js/vip.js' %}"></script>
+{% endblock scripts %}

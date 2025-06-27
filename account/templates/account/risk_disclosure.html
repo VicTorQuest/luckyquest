@@ -1,0 +1,109 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        color: #333;
+    }
+
+
+    header i {
+        color: black;
+    }
+
+    header .title {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+
+    .disclosure-agreement {
+        margin-top: 1rem;
+        margin-bottom: 7rem;
+    }
+
+
+    .disclosure-agreement div {
+        font-size: 14px;
+    }
+
+    .disclosure-agreement a {
+        color: #744da0;
+        text-decoration: none;
+    }
+    
+</style>
+{% endblock css %}
+{% block header %}
+<header>
+    <div>
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title">
+        Risk Disclosure Agreement
+    </div>
+
+    <div></div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="disclosure-agreement">
+    <div class="container">
+        <p>Last Updated: Feb 2, 2024</p>
+
+        <div>
+            By accessing and using Luckquestmall (the “Website”), you acknowledge and agree to the following Risk Disclosure Agreement. This agreement outlines the potential risks associated with using the services and content provided by Luckquestmall. Please read this document carefully before proceeding.
+        </div>
+
+        <div class="mt-4">
+            <h4>1. General Risk Warning</h4>
+            <p>The content, services, and materials provided on this Website are not intended as financial investment, legal, or professional advice. Any reliance on the information presented on this Website is at your own risk. We make no guarantees about the accuracy, completeness, or reliability of any information or services.</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>2. Financial Risk</h4>
+            <p>Participation in any financial activities mentioned on this Website may involve significant risk. You could lose part of your finance, and past performance does not guarantee future results. It is your responsibility to assess the risks and consult with a licensed financial advisor before making any decisions.</p>
+        </div>
+        
+
+        <div class="mt-4">
+            <h4>3. Technological Risk</h4>
+            <p>While we strive to ensure the uninterrupted and secure operation of our Website, technical failures, bugs, viruses, and unauthorized access may occur. Luckyquestmall cannot be held liable for any disruptions, data breaches, or losses that arise from the use of our platform due to technological issues.</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>4. Third-Party Links and Resources</h4>
+            <p>The Website may contain links to third-party websites or services. We do not endorse or assume responsibility for any third-party content or practices. Accessing third-party websites is at your own risk, and you should review their terms and risk policies before engaging with them.</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>5. Legal and Regulatory Risks</h4>
+            <p>
+                Users are responsible for complying with the laws and regulations in their country of residence. The services offered by luckuquestmall may not be suitable or legal in certain jurisdictions. It is the user’s responsibility to ensure they are legally permitted to use our services.
+            </p>
+        </div>
+
+        <div class="mt-4">
+            <h4>6. Limitation of Liability</h4>
+            <p>
+                Luckquestmall its affiliates, officers, employees, and partners shall not be liable for any direct, indirect, incidental, or consequential damages that arise from the use or inability to use the Website or its services. This includes, but is not limited to, loss of profits, data, or other intangible losses.
+            </p>
+        </div>
+
+        <div class="mt-4">
+            <h4>7. Changes to this Agreement</h4>
+            <p>We reserve the right to update this Risk Disclosure Agreement at any time. Your continued use of the Website following any changes will be considered acceptance of those changes. It is your responsibility to periodically review this document for updates.</p>
+        </div>
+        
+        <div class="mt-4">
+            <h4>8. Contact Us</h4>
+            <p>If you have any questions regarding this Risk Disclosure Agreement, please contact us at <a href="mailto:{{support_mail}}">{{support_mail}}</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

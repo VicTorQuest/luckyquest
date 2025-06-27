@@ -1,0 +1,168 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/profile_settings.css' %}">
+{% endblock css %}
+{% block header %}
+<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="emailModalLabel">Change email</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="label py-5">
+                <div class="user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <p>Email address</p>
+            </div>
+            <form class="mb-5" method="post">
+                {% csrf_token %}
+                <input type="email" value="{{request.user.email}}" placeholder="Please enter an email" id="emailAddress">
+            </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-primary" id="saveEmail">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="phoneModalLabel">Change phone number</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="label py-5">
+                <div class="user-icon">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <p>Phone number</p>
+            </div>
+            <form class="mb-5" method="post">
+                {% csrf_token %}
+                <input type="text" value="{{request.user.phone_number}}" placeholder="Please enter an email" id="phoneNumber">
+            </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-primary" id="savephone">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<header class="header">
+    <nav class="top-navbar">
+
+        <a class="logo-area" href="{% url 'home' %}">     
+            <div class="img-area me-1">
+              <img src="{% static 'account/img/logo.png' %}" alt="">
+            </div>
+            Luckyquestmall.com
+        </a>
+
+        <div class="support-container" id="supportIcon">
+            <i class="bi bi-headset"></i> Support
+        </div>
+    </nav>
+
+    <div class="header-text-container">
+        <h1 class="header-text"><span>Settings</span>
+      </div>
+
+
+
+    <div class="user-account container shadow">
+        
+        <div class="user-info">
+            <div class="user-icon">
+                <i class="bi bi-person-fill"></i>
+            </div>
+            <div class="change-avatar">
+                <span class="badge {{request.user.wallet.slug}}"><i class="bi bi-star-fill me-1"></i>{{request.user.wallet.level}}</span>
+            </div>
+        </div>
+
+        <div class="username py-3">
+            {% if request.user.email %}
+            <p class="mb-0">Email</p>
+            <div class="email" data-bs-toggle="modal" data-bs-target="#emailModal">{{request.user.username}} <i class="bi bi-chevron-right ms-2"></i></div>
+            {% else %}
+            <p>Phone number</p>
+            <div class="phone" data-bs-toggle="modal" data-bs-target="#phoneModal">{{request.user.username}} <i class="bi bi-chevron-right ms-2"></i></div>
+            {% endif %}
+        </div>
+        
+        <div class="uid py-3">
+            <p>UID</p>
+            <p>{{request.user.wallet.uid}} <i class="bi bi-clipboard-check-fill ms-2" onclick="copyUID('{{request.user.wallet.uid}}')"></i></p>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+
+
+
+{% block content %}
+
+<div class="safety-information">
+    <div class="container">
+        <div class="safety-info">
+            <h5>Safety Information</h5>
+
+            <div class="login-password shadow mt-3">
+                <div class="left">
+                    <div class="icon-area me-3">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <p>Login password</p>
+                </div>
+                <div id="review" data-url="{% url 'change_login_password' %}">
+                    Review
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
+
+
+            <div class="login-password shadow mt-4">
+                <div class="left">
+                    <div class="icon-area me-3">
+                        <i class="bi bi-phone-fill"></i>
+                    </div>
+                    <p>New version update</p>
+                </div>
+                <div>
+                    1.0.2
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clear-cache">
+    <div class="container">
+        <button class="clear-cache-btn">
+            <i class="bi bi-trash-fill me-2"></i>
+            clear cache
+        </button>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    var initialEmail = "{{request.user.email}}"
+    var initialPhone = "{{request.user.phone_number}}"
+</script>
+<script src="{% static 'account/js/profile_settings.js' %}"></script>
+{% endblock scripts %}

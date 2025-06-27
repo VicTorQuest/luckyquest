@@ -1,0 +1,85 @@
+.header {
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.announcememts {
+    margin-top: 2rem;
+}
+
+
+.announcememts .message {
+    background: #fff;
+    border-radius: 15px;
+    padding: 12px;
+}
+
+
+.announcememts .message:hover {
+    cursor: pointer;
+}
+
+.announcememts .message .top {
+    display: flex;
+    align-items: center;
+}
+
+.announcememts .message .top h5 {
+    margin: 0;
+    margin-left: 15px;
+}
+
+.announcememts .message .icon i {
+    font-size: 25px;
+    color: #744da0;
+} 
+
+
+.announcememts .message .icon i.read {
+    opacity: 0.5;
+}
+
+.announcememts .message .text {
+    margin-left: 40px;
+}
+
+
+.announcememts .message .bottom {
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #212529;
+}
+
+
+
+.announcememts .message .bottom .seen {
+    display: flex;
+    align-items: center;
+}
+
+
+.announcememts .message .bottom .seen i {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #55208a;
+}
+
+
+.btn-close:active, .btn-close:focus {
+    box-shadow: none !important;
+}

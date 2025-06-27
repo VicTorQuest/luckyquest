@@ -1,0 +1,170 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+}
+
+
+header i {
+    color: black;
+}
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+.deposit-report .spinner-border, .withdrawal-report .spinner-border {
+    color: #744da0;
+}
+
+.filter-container {
+    margin-top: 1rem;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.filters .filter-by-status, .filters .filter-by-date {
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.filters .filter-by-status {
+    margin-right: 5px;
+}
+
+
+.filters .filter-by-date {
+    margin-left: 5px;
+}
+
+
+.modal-content {
+    background: #fff;
+}
+
+
+#sortStatusModal .levels {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+#sortStatusModal .levels li {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #323233;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+
+#sortStatusModal .levels li.selected {
+    color: #212121;
+}
+
+
+#sortStatusModal .levels li:hover {
+    cursor: pointer;
+    background: #f5f5f5;
+}
+
+.history-container {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+}
+
+
+.records-container {
+    margin-top: 24rem;
+    margin-bottom: 6rem;
+}
+
+
+.deposit-report, .withdrawal-report {
+    border-radius: 10px;
+}
+
+
+.withdrawal-report {
+    margin-top: 2rem;
+}
+
+.deposit-report h3, .withdrawal-report h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.deposit-table th, .withdrawal-table h3 {
+    color: #363636;
+}
+
+.deposit-table th{
+    width: 200px !important;
+}
+
+
+.deposit-table, .withdrawal-table {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+
+
+.table .badge.Pending {
+    color: #664d03;
+    background-color: #fff3cd;
+}
+
+
+.table .badge.Successful {
+    color: #0a3622;
+    background-color: #cfe2ff;
+}
+
+
+.table .badge.Failed {
+    color: #58151c;
+    background-color: #f8d7da;
+}
+
+
+.form-control:focus {
+    border-color: #744da0;
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+}
+
+
+#selectedStatus, #selectedDate {
+    font-size: 14px;
+}
+
+
+@media screen  and (max-width:480px){
+    #selectedStatus, #selectedDate {
+        font-size: 12px;
+    }
+}
+
+
+@media screen  and (max-width:375px){
+    #selectedStatus, #selectedDate {
+        font-size: 10.5px;
+    }
+}

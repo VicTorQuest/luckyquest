@@ -1,0 +1,40 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/feedback.css' %}">
+{% endblock css %}
+{% block header %}
+<header>
+    <div>
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title">
+        Feedback
+    </div>
+
+    <div></div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="feedback">
+    <div class="container mt-2">
+        <form action="" method="post" id="feedbackForm">
+            {% csrf_token %}
+            <textarea class="shadow" name="feedback" id="feedback" placeholder="welcome to feedback, please include feedback-please describe the problem in detail when giving feedback we will process your submitted feedback quickly!"></textarea>
+            <div class="mt-4 text-center">
+                <h6>Provide useful feedback</h6>
+                <h6>Chance to Win Mystery Rewards</h6>
+            </div>
+            <div class="img-area">
+                <img src="{% static 'account/img/feedback.png' %}" alt="" srcset="">
+            </div>
+    
+            <button type="submit" class="btn submit-btn w-100 p-3 mt-4" id="submitfeedback">Confirm</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'account/js/feedback.js' %}"></script>
+{% endblock scripts %}

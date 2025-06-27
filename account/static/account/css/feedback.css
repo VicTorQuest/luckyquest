@@ -1,0 +1,65 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+}
+
+
+header i {
+    color: black;
+}
+
+.feedback {
+    margin-bottom: 5rem;
+}
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+#feedback {
+    margin-top: 1rem;
+    width: 100%;
+    height: 320px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+
+#feedback:active, #feedback:focus-visible {
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+    outline: none;
+}
+
+
+.img-area { 
+    width: 100%;
+}
+
+.img-area img {
+    /* width: 100%; */
+    height: 50%;
+}
+
+
+.submit-btn {
+    background: linear-gradient(to right, #744da0, #55208a);
+    color: #eceff4;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 25px;
+}
+
+
+.submit-btn:hover {
+    color: #ffffff;
+}
+
+.submit-btn:active, .submit-btn:focus {
+    color: #eceff4 !important;
+}

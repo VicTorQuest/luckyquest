@@ -1,0 +1,293 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/process_deposit.css' %}">
+{% endblock css %}
+{% block header %}
+<header>
+    <div class="back">
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title">
+        Recharge 
+    </div>
+
+    <div class="last-space"></div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="invoice-container">
+    <div class="container">
+        <div class="invoice">
+            <div class="top-heading">
+                <img src="{% static 'account/img/logo-icon-light.webp' %}" class="" alt="">
+                <h4 class="mt-2">{{domain_name}}</h4>
+                <p class="mt-3 info">Scan the Qr code or copy and paste the payment details into your wallet</p>
+            </div>
+
+            {% if transaction.status == 'Pending' %}
+            <div class="mt-4 main-invoice">
+                <div class="py-3 awaiting">
+                    <div>
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div> 
+                        <span class="ms-1">{% if transaction.proof_of_payment %}Processing Payment...{% else %}Awaiting Payment...{% endif %}</span>
+                    </div>
+               
+                    {% if transaction.proof_of_payment %}
+                    <div class="text-end">
+                        0.00
+                    </div>
+                    
+                    {% else %}
+                    <div class="text-end" id="timer">
+                        0.00
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="paying-with py-3">
+                    <div class="">
+                        Paying With
+                    </div>
+                    
+                    <div class="method">
+                        <div class="img-area">
+                            <img src="{% static 'account/img/usdt-icon.webp' %}" alt="">
+                        </div>
+                        <div class="ms-2 currency">
+                            {% if network == 'trc' %}
+                            <h6 class="mb-1">Tether(TRC-20)</h6>
+                            {% else %}
+                            <h6 class="mb-1">Tether(ERC-20)</h6>
+                            {% endif %}
+                            <small>USDT</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <progress id="progressBar" {% if transaction.proof_of_payment %}value="0"{% else %}value="30"{% endif %}  max="100"></progress>
+                <div class="qr-code-container">
+                    <div class="qr-code-area mx-auto my-auto">
+                        {% if network == 'trc' %}
+                        <img src="{{wallet.TRC_QRCODE_IMAGE_LINK}}" class="w-100" alt="">
+                        {% else %}
+                        <img src="{{wallet.ERC_QRCODE_IMAGE_LINK}}" class="w-100" alt="">
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="invoice-details">
+                    <div class="first-row">
+                        <div class="input-group">
+                            <input type="text" class="form-control py-0 ps-0 border-0 address-input" readonly value="Address" placeholder="Address text" aria-label="Address text" aria-describedby="button-addon2">
+                           
+                        </div>
+    
+                        <div class="input-group">
+                            <input type="text" class="form-control py-0 border-0 address-input" id="walletAddress" readonly value="{% if network == 'trc' %}{{wallet.TRC_Wallet_Address}}{% else %}{{wallet.ERC_Wallet_Address}}{% endif %}" placeholder="wallet address" aria-label="wallet address" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn copy-btn p-0 border-0" type="button" onclick="copyaddress()" id="button-addon2"><i class="bi bi-clipboard-fill p-0"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="second-row">
+                        <div class="">
+                            Total Price
+                        </div>
+                        <div class="text-end">
+                            ${{transaction.amount|floatformat:2|intcomma}}
+                        </div>
+                    </div>
+
+                    <div class="third-row">
+                        <div class="">
+                            Exchange Rate
+                        </div>
+                        <div class="text-end">
+                            1 USDT @ ${{exchange_rate|floatformat:2|intcomma}}
+                        </div>
+                    </div>
+
+                    <div class="fourth-row">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-0 border-0  amount-due" readonly value="Amount Due" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            
+                        </div>
+                        <div class="input-group text-end">
+                            <input type="text" id="amountDue" class="form-control py-0 border-0 amount-due amount-due-value text-end" readonly value="{{transaction.value}}" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="d-flex">
+                                <span class="border-0 amount-due amount-due-btn pe-2">USDT</span>
+                                <button class="btn copy-btn p-0 border-0" onclick="copyamount()" type="button" id="button-addon2"><i class="bi bi-clipboard-fill p-0"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if transaction.proof_of_payment %}
+                {% else %}
+                <div class="p-4">
+                    <form method="post" enctype="multipart/form-data" id="paymentform">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Payment Proof</span>
+                            <input type="file" name="payment_proof" class="form-control custom-file-input" id="paymentProof">
+                        </div>
+                        <input type="hidden" name="transaction_id" value="{{transaction.transaction_id}}">
+    
+                          <div class="d-grid gap-2">
+                              <button type="submit" id="submitbtn" class="btn mt-2 text-white">Confirm Payment</button>
+                          </div>
+                    </form>
+                                            
+                </div>
+                {% endif %}
+            </div>
+            {% elif transaction.status == 'Successful' %}
+            <div class="mt-4 main-invoice">
+                <div class="py-3 awaiting bg-success">
+                        <span class="ms-2">Transaction Completed</span>
+                </div>
+
+                <div class="paying-with border-bottom py-3">
+                    <div class="">
+                        Paid With
+                    </div>
+                    
+                    <div class="method">
+                        <div class="img-area">
+                            <img src="{% static 'account/img/usdt-icon.webp' %}" alt="">
+                        </div>
+                        <div class="ms-2 currency">
+                            {% if network == 'trc' %}
+                            <h6 class="mb-1">Tether(TRC-20)</h6>
+                            {% else %}
+                            <h6 class="mb-1">Tether(ERC-20)</h6>
+                            {% endif %}
+                            <small>USDT</small>
+                        </div>
+                    </div>
+                </div>
+              
+
+                <div class="qr-code-container">
+                    <div class="qr-code-area mx-auto border-0">
+                        <i class="bi bi-check-circle w-100" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+
+                <div class="invoice-details">
+                    <div class="first-row">
+                        <div class="input-group">
+                            <input type="text" class="form-control py-0 ps-0 border-0 address-input" readonly value="Address" placeholder="Address text" aria-label="Address text" aria-describedby="button-addon2">
+                           
+                        </div>
+    
+                        <div class="input-group">
+                            <input type="text" class="form-control py-0 border-0 address-input" id="walletAddress" readonly value="{{wallet.TRC_Wallet_Address}}" placeholder="wallet address" aria-label="wallet address" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn copy-btn p-0 border-0" type="button" onclick="copyaddress()" id="button-addon2"><i class="bi bi-clipboard-fill p-0"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="second-row">
+                        <div class="">
+                            Total Price
+                        </div>
+                        <div class="text-end">
+                            ${{transaction.amount|floatformat:2|intcomma}}
+                        </div>
+                    </div>
+
+                    <div class="third-row">
+                        <div class="">
+                            Exchange Rate
+                        </div>
+                        <div class="text-end">
+                            1 USDT @ ${{exchange_rate|floatformat:2|intcomma}}
+                        </div>
+                    </div>
+
+                    <div class="fourth-row">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-0 border-0  amount-due" readonly value="Amount Due" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            
+                        </div>
+                        <div class="input-group text-end">
+                            <input type="text" id="amountDue" class="form-control py-0 border-0 amount-due amount-due-value text-end" readonly value="{{transaction.value}}" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="d-flex">
+                                <span class="border-0 amount-due amount-due-btn pe-2">USDT</span>
+                                <button class="btn copy-btn p-0 border-0" onclick="copyamount()" type="button" id="button-addon2"><i class="bi bi-clipboard-fill p-0"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if transaction.proof_of_payment %}
+                {% else %}
+                <div class="p-4">
+                    <form method="post" enctype="multipart/form-data" id="paymentform">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Payment Proof</span>
+                            <input type="file" name="payment_proof" class="form-control custom-file-input" id="paymentProof">
+                        </div>
+                        <input type="hidden" name="transaction_id" value="{{transaction.transaction_id}}">
+    
+                          <div class="d-grid gap-2">
+                              <button type="submit" id="submitbtn" class="btn mt-2 text-white">Confirm Payment</button>
+                          </div>
+                    </form>
+                                            
+                </div>
+                {% endif %}
+            </div>
+            {% elif transaction.status == 'Failed' %}
+            <div class="mt-4 main-invoice">
+
+                        <div class="py-3 awaiting bg-danger">
+                            <div>
+                                <span class="ms-1">Invoice Expired</span>
+                            </div>
+                       
+                            <div class="text-end">
+                                0.00
+                            </div>                      
+                        </div>
+
+
+
+                    
+                            
+                        <p class="p-3">Payment window for this invoice has closed. Your invoice has expired due to non-payment, please reinitiate the payment process.</p>
+                                                    
+
+                        <div class="py-4 px-3 d-grid gap-2">
+                            <a  href="{% url 'deposit' %}" class="btn mt-2 text-white return-btn">Return to Top Up</a>
+                        </div>
+
+                
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    const transaction_id = "{{transaction.transaction_id}}"
+    const returnUrl = "{% url 'deposit' %}"
+    const callToAction = 'Return to deposit'
+    const csrf = document.getElementsByName("csrfmiddlewaretoken")
+    console.log(csrf)
+</script>
+<script src="{% static "account/js/csrf.js" %}"></script>
+<script src="{% static "account/js/process_deposit.js" %}"></script>
+{% endblock scripts %}

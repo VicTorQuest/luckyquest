@@ -1,0 +1,166 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/upgrade_tier.css' %}">
+{% endblock css %}
+{% block header %}
+<header class="header">
+    <nav class="top-navbar">
+  
+      <a class="logo-area" href="{% url 'home' %}">     
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </a>
+  
+    <div class="support-container" id="supportIcon">
+        <i class="bi bi-headset"></i> Support
+    </div>
+    </nav>
+  
+    <div class="header-text-container">
+      <h1 class="header-text">Tier <span>upgrade</span>
+    </div>
+  
+  </header>
+{% endblock header %}
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="confirmUpgradeModal" tabindex="-1" aria-labelledby="confirmUpgradeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="confirmUpgradeModalLabel">Upgrade Tier</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-white mx-3" id="broadcastMessage">
+            <p class="text-center mb-0">
+                You are about to upgrade your tier to {{level}}
+            </p>
+        </div>
+        <div class="modal-footer justify-content-around" id="confirmDeleteFooter">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="upgradeBtn" data-id="">Confirm</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="class-benefit-container">
+    <div class="container">
+        <div class="class-benefit">
+            <div class="d-flex justify-content-between">
+                <h2><span class="icon-area me-2"><i class="bi bi-gem"></i></span>{{level}}  Benefits</h2>
+
+                <h2><span class="icon-area me-2"><i class="bi bi-unlock-fill"></i> </span> ${{unlock_amount|floatformat:2|intcomma}}</h2>
+            </div>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-gift-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Upgrade Package</h3>
+                    <span>Each account can only receive one time</span>
+                </div>
+
+                <div>
+                    <p class="mb-1" id="packageUpgrade"><span class="mini-icons me-2"><i class="bi bi-wallet2"></i></span> {{upgrade_package}}</p>
+                    <p class="mb-0"><span class="mini-icons me-2"><i class="bi bi-gem"></i> </span> 0</p>
+                </div>
+            </div>
+
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-coin"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Daily Reward</h3>
+                    <span>Each account can only receive once after login</span>
+                </div>
+
+                <div>
+                    <p class="mb-1" id="rewardMonthly"><span class="mini-icons me-2"><i class="bi bi-wallet2"></i></span> {{daily_reward}}</p>
+                    <p class="mb-0"><span class="mini-icons me-2"><i class="bi bi-gem"></i></span>0</p>
+                </div>
+            </div>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Deposit Reward</h3>
+                    <span>Get rewards every time you deposit</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0"><span class="max-icons me-2"><i class="bi bi-wallet2"></i></span>0%</p>
+                </div>
+            </div>
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-safe2-fill"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Safe</h3>
+                    <span>Increase the extra income of the safe</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0" id="safe"><span class="max-icons me-2"><i class="bi bi-safe-fill"></i></span>{{safe}}%</p>
+                </div>
+            </div>
+
+
+            <div class="benefit mt-3">
+                <div class="icon-area">
+                    <i class="bi bi-currency-exchange"></i>
+                </div>
+
+                <div class="text ms-2">
+                    <h3>Recharge rate</h3>
+                    <span>Increase your income of rebate</span>
+                </div>
+
+                <div>
+                    <p class="py-1 mb-0" id="rateRecharge"><span class="max-icons me-2"><i class="bi bi-cash"></i></span>{{recharge_rate}}%</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <button type="button" class="btn btn-primary upgrade-modal" data-bs-toggle="modal" data-bs-target="#confirmUpgradeModal">Upgrade</button>
+            {% if unlock_amount > request.user.wallet.balance %}
+            <a href="{% url 'deposit' %}" class="btn btn-outline-success" id="depositLink">Deposit</a>
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    const balance = parseInt("{{request.user.wallet.balance}}")
+    const slug = "{{slug}}"
+    const level = "{{level}}"
+    const upgrade_amount = parseInt("{{unlock_amount}}")
+    const previous_tier = parseInt("{{previous_tier}}")
+    const previoud_level = "{{previoud_level}}"
+</script>
+<script src="{% static 'account/js/csrf.js' %}"></script>
+<script src="{% static 'account/js/upgrade_tier.js' %}"></script>
+{% endblock scripts %}

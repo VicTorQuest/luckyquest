@@ -1,0 +1,73 @@
+.header {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+.cs-content {
+    margin-top: 3rem;
+}
+
+
+.customer-services .accordion-button:not(.collapsed) {
+    background-color: rgb(116, 77, 160, .25);
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+    color: #4c2f6d;
+}
+
+.customer-services .accordion-button:focus {
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+}
+
+
+.customer-services .accordion-item .accordion-header button {
+    font-weight: 500 !important;
+} 
+
+.customer-services .accordion-item i {
+ font-size: 26px;
+ color: #744da0;
+}
+
+
+.customer-services .accordion-item .accordion-body {
+    font-size: 13px;
+}
+
+
+.customer-services .accordion-item .accordion-body ol a {
+    color: #744da0;
+    text-decoration: none;
+}
+
+
+.tip-container {
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+}
+
+.tip {
+    padding: 25px 10px;
+    padding-bottom: 32px;
+    font-size: 14px;
+    border: 1px solid #744da0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.tip .title {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 256px;
+    height: 21.33px;
+    color: #fff !important;
+    background-color: #744da0;
+    text-align: center;
+    clip-path: polygon(2% 0%, 98% 0%, 100% 50%, 98% 100%, 2% 100%, 0% 50%);
+}

@@ -1,0 +1,320 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% load social_share %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/profile.css' %}">
+{% endblock css %}
+{% block header %}
+<!-- Share Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content share-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="shareModalLabel">Share page</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="copy-inv-link" data-copy-link="https://{{request.get_host}}/register/{{request.user.referral.invitation_code}}">
+            Copy the invitation link
+          </div>
+          <a href="{% url 'generate_qr_code' %}" download="" class="qr-code-link mt-3">
+           Download QR code
+          </a>
+          <p class="mt-2 my-0">
+            Copy the link or click on the app icon below to directly share with your friends.
+          </p>
+        </div>
+        <div class="modal-footer">
+            {% with invite_link="https://"|add:request.get_host|add:"/register/"|add:request.user.referral.invitation_code %}
+           
+            {% post_to_facebook "The most reliable WinGo, Earning platform" invite_link %}
+            {% post_to_telegram "The most reliable WinGo, Earning platform" invite_link %}
+            {% post_to_whatsapp invite_link %} 
+            {% post_to_reddit "The most reliable WinGo, Earning platform" invite_link%}
+            {% post_to_twitter "The most reliable WinGo, Earning platform" invite_link%}
+            {% send_email "The most reliable WinGo, Earning platform" "https://{{request.get_host}}/register/{{request.user.referral.invitation_code}}" %}
+            {% post_to_gplus invite_link %} 
+            {% endwith %}
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+<header class="header">
+    <nav class="top-navbar">
+
+        <a class="logo-area" href="{% url 'home' %}">     
+            <div class="img-area me-1">
+              <img src="{% static 'account/img/logo.png' %}" alt="">
+            </div>
+            Luckyquestmall.com
+        </a>
+
+        <div class="support-container" id="supportIcon">
+            <i class="bi bi-headset"></i> Support
+        </div>
+    </nav>
+
+    <div class="user-info container">
+        <div class="user-icon">
+            <i class="bi bi-person-fill"></i>
+        </div>
+        <div class="ms-3">
+            <p class="username">{{request.user.username}}</p>
+            <p class="stage">UID &nbsp;|&nbsp; {{request.user.wallet.uid}} <i class="bi bi-copy ms-3" onclick="copyUID('{{request.user.wallet.uid}}')"></i></p>
+            <p class="last-login"><span>Last login</span>: {{request.user.last_login}}</p>
+        </div>
+    </div>
+
+
+    <div class="user-account container shadow">
+        <div class="account-balance">
+            <div>
+                <span class="text">balance</span>
+                <p class="amount">${{request.user.wallet.balance|floatformat:2|intcomma}}</p>
+            </div>
+
+            <div>
+                <span class="badge {{request.user.wallet.slug}}"><i class="bi bi-star-fill me-1"></i>{{request.user.wallet.level}}</span>
+            </div>
+        </div>
+
+        <div class="account-statement mb-2">
+            <div class="wallet">
+                <a href="{% url "wallet" %}">
+                    <div class="icon-area">
+                        <i class="bi bi-wallet"></i>
+                    </div>
+                    <span>Wallet</span>
+                </a>
+            </div>
+
+            <div class="deposit">
+                <a href="{% url "deposit" %}">
+                    <div class="icon-area">
+                        <i class="bi bi-credit-card-2-front"></i>
+                    </div>
+                    <span>Deposit</span>
+                </a>
+            </div>
+
+            <div class="withdraw">
+                <a href="{% url "withdrawal" %}">
+                    <div class="icon-area">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <span>Withdraw</span>   
+                </a>
+                
+            </div>
+
+            <div class="vip">
+                <a href="{% url "vip" %}">
+                    <div class="icon-area">   
+                        <i class="bi bi-gem"></i>
+                    </div>
+                    <span>VIP</span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="histories container">
+
+        <div class="history">
+            <a class="shadow" href="{% url "deposit_history" %}">
+                <div>
+                    <i class="bi bi-file-text-fill"></i>
+                </div>
+                <div class="ms-2">
+                    <h3>Deposits</h3>
+                    <span>my deposit history</span>
+                </div>
+            </a>
+        </div>
+   
+   
+   
+        <div class="history">
+            <a class="shadow" href="{% url "withdrawal_history" %}">
+                <div>
+                    <i class="bi bi-file-text-fill"></i>
+                </div>
+                <div class="ms-2">
+                    <h3>Withdrawals</h3>
+                    <span>my deposit history</span>
+                </div>
+            </a>
+        </div>
+
+</div>
+
+<div class="share-container">
+    <div class="container">
+        <div class="share-with-friends" data-bs-toggle="modal" data-bs-target="#shareModal">
+            <div class="share-text" >Share with a friend</div>
+            <div class="share-icon pe-2"><i class="bi bi-share"></i></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="invitation-container">
+    <div class="container">
+        <div class="p-3 invitation" id="invCopy">
+            <div class="copy-invitation-code">
+                <div class="text">
+                    <i class="bi bi-clipboard-check-fill"></i>
+                    <span class="ms-2">copy invitation code</span>
+                </div>
+            </div>
+            <div class="code-container mt-2">
+                <div class="ms-3 inv-code">{{request.user.referral.invitation_code}}</div>
+                <div class="copy-icon"><i class="bi bi-copy"></i></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="setting-panel-container px-3">
+        <a href="{% url 'notifications' %}" class="setting-section py-4">
+            <div class="left-side">
+                <i class="bi bi-bell-fill me-2"></i>
+                <span>notice</span>
+            </div>
+    
+            <div class="right-side">
+                <span class="">{% if unread_notifications > 99 %}99+{% else %}{{unread_notifications}}{% endif %}</span>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="{% url "team_report" %}" class="setting-section py-4">
+            <div class="left-side">
+                <i class="bi bi-people-fill me-2"></i>
+                <span>team report</span>
+            </div>
+    
+            <div class="right-side">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="{% url "redeem_gift" %}" class="setting-section py-4">
+            <div class="left-side">
+                <i class="bi bi-gift-fill me-2"></i>
+                <span>gift exchange</span>
+            </div>
+    
+            <div class="right-side">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="{% url "change_language" %}" class="setting-section py-4">
+            <div class="left-side">
+                <i class="bi bi-globe-americas me-2"></i>
+                <span>Change Language</span>
+            </div>
+    
+            <div class="right-side">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div>
+    <div class="container">
+        <div class="service-center px-3 py-4">
+            <h3>Service Center</h3>
+
+            <div class="row g-4 service-center-items my-3">
+                <div class="col-4">
+                    <a class="settings" href="{% url "profile_settings" %}">
+                        <div class="icon-area">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                        <span>Settings</span>   
+                    </a>
+                </div>
+
+                <div class="col-4">
+                    <a href="{% url 'feedback' %}" class="feedback">
+                        <div class="icon-area">
+                            <i class="bi bi-chat-left-text-fill"></i>
+                        </div>
+                        <span>Feedback</span>  
+                    </a>
+                </div>
+
+
+                <div class="col-4">
+                    <a href="{% url 'announcements' %}" class="announcement">
+                        <div class="icon-area">
+                            <i class="bi bi-megaphone-fill"></i>
+                        </div>
+                        <span>Announcement</span>  
+                    </a>
+                </div>
+                    
+
+                <div class="col-4">
+                    <a href="{% url 'customer_service' %}" class="settings" href="">
+                        <div class="icon-area">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <span>Customer service</span>   
+                    </a>
+                </div>
+
+                    
+
+                <div class="col-4">
+                    <a href="" class="feedback">
+                        <div class="icon-area">
+                            <i class="bi bi-journal-album"></i>
+                        </div>
+                        <span>Beginner tutorial</span>  
+                    </a>
+                </div>
+
+
+                    
+
+                <div class="col-4">
+                    <a href="{% url 'about' %}" class="announcement">
+                        <div class="icon-area">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </div>
+                        <span>About</span>  
+                    </a>
+                </div>
+                    
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="sign-out mt-5">
+    <div class="container">
+        <a href="{% url 'sign_out' %}" class="signout-btn"><i class="bi bi-box-arrow-right me-2"></i> Sign Out</a>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'account/js/profile.js' %}"></script>
+{% endblock scripts %}

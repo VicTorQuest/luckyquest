@@ -1,0 +1,356 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    width: 100%;
+}
+
+
+header i {
+    color: black;
+}
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+header .parts {
+ width: 33%;
+}
+
+header .parts.text-end a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+.balance-container {
+    margin-top: 1rem;
+}
+
+
+.balance-card {
+    background: url('/static/account/img/vip9-bg.webp') no-repeat center, linear-gradient(117.29deg, #744da0 21.85%, #55208a 67.02%);
+    border-radius: 15px;
+    padding: 15px;
+    color: #fff;
+}
+
+
+.balance-card .top {
+    display: flex;
+    align-items: center;
+}
+
+
+.balance-card .top .icon-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: #eceff4;
+}
+
+.balance-card .top .icon-area i {
+    font-size: 15px;
+    color: #744da0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.balance-card .balance {
+    font-size: 28px;
+    font-style: oblique;
+    font-weight: 700;
+    margin-top: 0.8rem;
+}
+
+
+
+
+.balance-card .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.balance-card .bottom img {
+    width: 38px;
+}
+
+
+.withdrawal-container {
+    margin-top: 2rem;
+}
+
+
+.nav-link {
+    color: #744da0;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #744da0;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #744da0;
+}
+
+
+.nav-pills .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-pills .nav-item img {
+    width: 30px;
+}
+
+
+.form-control {
+    border: none !important;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid #55208a !important;
+    padding: 10px;
+}
+
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none
+}
+
+
+.phone-input {
+    border: none !important;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid #55208a !important;
+    padding: 10px 10px 10px 0;
+    
+}
+
+.phone-input input {
+    border: none !important;
+    padding: 0;
+}
+
+
+.input-phone-select {
+    cursor: pointer;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+
+.country-code-search {
+    border: 1px solid rgb(134,144,156);
+    padding: 0 10px 0 10px;
+    border-radius: 12px;
+    height: 40px;
+}
+
+
+.btn-close:active, .btn-close:focus {
+    box-shadow: none !important;
+}
+
+
+.country-code-search input {
+    border: none;
+    margin-left: 10px;
+}
+
+
+.country-code-search input:active, .country-code-search input:focus {
+    border: none;
+    outline: none;
+}
+
+.country-code-list {
+    padding: 0;
+}
+
+.country-code-list li {
+    cursor: pointer;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #98989a;
+    display: flex;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+
+.country-code-list li:hover {
+    background-color: #eceff4;
+}
+
+.country-code-list li .italic {
+    font-size: 12px !important;
+}
+
+
+.country-code-list .selected {
+    color: #55208a;
+}
+
+.country-code-list .selected .bi-check-circle-fill {
+    color: #744da0;
+}
+
+
+.input-group .input-group-text {
+    background: transparent !important;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #55208a !important;
+}
+
+
+.usdt-network {
+    position: relative;
+}
+
+.usdt-network i {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.modal-content {
+    background-color: #fff;
+}
+
+
+.network-list {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+
+.network-list li {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #323233;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+
+.network-list li:hover, #usdtNetwork:hover {
+    cursor: pointer;
+}
+
+
+.network-list li.selected {
+    color: #000;
+    font-weight: 700;
+}
+
+
+
+.withdrawal-instructions {
+    margin-top: 2rem;
+}
+
+
+.instructions {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+.instructions h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.instructions .instructions-list {
+    font-size: 12px;
+    border: 0.5px solid #d6d6d6 ;
+    border-radius: 10px;
+    padding: 15px 15px 20px 30px;
+}
+
+
+.instructions .instructions-list  li {
+    margin-bottom: 1rem;
+}
+
+.instructions .instructions-list  li span {
+    color: #744da0;
+}
+
+
+
+.records-container {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+}
+
+
+.withdrawal-report {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+
+
+.withdrawal-report h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+
+.withdrawal-table th{
+    color: #363636;
+}
+
+
+.withdrawal-table{
+    font-size: 13px;
+}
+
+
+
+.table .badge.Pending {
+    color: #664d03;
+    background-color: #fff3cd;
+}
+
+
+.table .badge.Successful {
+    color: #0a3622;
+    background-color: #cfe2ff;
+}
+
+
+.table .badge.Failed {
+    color: #58151c;
+    background-color: #f8d7da;
+}
+
+@media screen and (max-width:370px) {
+    .form-control {
+        font-size: 14px;
+    }
+}

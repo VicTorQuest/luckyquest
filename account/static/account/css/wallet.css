@@ -1,0 +1,237 @@
+.header {
+    padding-bottom: 40px;
+    position: relative;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+    color: #fff;
+}
+
+.top-navbar .title {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.top-navbar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.top-navbar a i {
+    font-size: 22px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.wallet {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-box-align: center;
+}
+
+
+.wallet .icon-area {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eceff4;
+    border-radius: 10px;
+}
+
+
+.wallet .icon-area i {
+    font-size: 30px;
+    color: #744da0;
+    display: flex;
+    align-items: center;
+}
+
+
+.wallet  .balance {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+.wallet  p {
+    line-height: 0.5rem;
+}
+
+.wallet  p small {
+    color: #fff;
+
+}
+
+
+.wallet-info {
+    background: #fff;
+    position: absolute;
+    bottom: -22rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 0;
+    width: 95%;
+    border-radius: 0.8rem;
+}
+
+
+.wallet-info .stats {
+    padding: 15px 0;
+}
+
+.wallet-info .stats .wallet-balances {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-pack: justify;
+    width: 100%;
+}
+
+.wallet-info .stats .wallet-balances .balances {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.wallet-info .stats .wallet-balances .balances .icon-area {
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: #eceff4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.wallet-info .stats .wallet-balances .balances .icon-area i {
+    font-size: 35px;
+    color: #744da0;
+}
+
+
+.wallet-info .stats .wallet-balances .balances p {
+    line-height: 1.1rem;
+}
+
+
+.wallet-info .stats .withdraw {
+    color: #fff;
+    font-weight: 600;
+    padding: 12px;
+    background: linear-gradient(180deg, #744da0 0%, #55208a 100%);
+    border-radius: 20px;
+}
+
+
+
+.account-statement {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-statement a, .history a {
+    text-decoration: none;
+    color: #222;
+}
+
+
+.account-statement .icon-area {
+    background: #744da0;
+    width: 55px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.account-statement span {
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.account-statement .icon-area i{
+    font-size: 28px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.deposit-record, .deposit, .withdraww, .withdrawal-record {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.records-container {
+    margin-top: 24rem;
+    margin-bottom: 6rem;
+}
+
+
+.deposit-report, .withdrawal-report, .transaction-report {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+
+.withdrawal-report, .transaction-report {
+    margin-top: 2rem;
+}
+
+.deposit-report h3, .withdrawal-report h3, .transaction-report h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.deposit-table th, .withdrawal-table h3, .transaction-table h3 {
+    color: #363636;
+}
+
+
+.deposit-table, .withdrawal-table, .transaction-table {
+    font-size: 13px;
+}
+
+
+
+.table .badge.Pending {
+    color: #664d03;
+    background-color: #fff3cd;
+}
+
+
+.table .badge.Successful {
+    color: #0a3622;
+    background-color: #cfe2ff;
+}
+
+
+.table .badge.Failed {
+    color: #58151c;
+    background-color: #f8d7da;
+}

@@ -1,0 +1,60 @@
+.header {
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.agreements-container {
+    margin-top: 3rem;
+}
+
+
+.agreement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background: #fff;
+    border-radius: 5px;
+    padding: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #212529;
+    font-weight: 500;
+}
+
+
+.agreement .left, .agreement .right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.agreement p {
+    margin-bottom: 0;
+}
+
+.agreement .icon-area {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eceff4;
+    border-radius: 5px;
+}
+
+.agreement .left i, .agreement .right i {
+    font-size: 22px;
+    color: #744da0;
+}

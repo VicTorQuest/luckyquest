@@ -1,0 +1,358 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    width: 100%;
+}
+
+
+header i {
+    color: black;
+}
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+header .parts {
+ width: 33%;
+}
+
+header .parts.text-end a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+.balance-container {
+    margin-top: 1rem;
+}
+
+
+.balance-card {
+    background: url('/static/account/img/vip9-bg.webp') no-repeat center, linear-gradient(117.29deg, #744da0 21.85%, #55208a 67.02%);
+    border-radius: 15px;
+    padding: 15px;
+    color: #fff;
+}
+
+
+.balance-card .top {
+    display: flex;
+    align-items: center;
+}
+
+
+.balance-card .top .icon-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: #eceff4;
+}
+
+.balance-card .top .icon-area i {
+    font-size: 15px;
+    color: #744da0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.balance-card .balance {
+    font-size: 28px;
+    font-style: oblique;
+    font-weight: 700;
+    margin-top: 0.8rem;
+}
+
+
+
+
+.balance-card .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.balance-card .bottom img {
+    width: 38px;
+}
+
+
+
+.notice {
+    margin-top: 1.5rem;
+}
+
+
+.notice .alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dec6f8;
+    color: #2e1f41;
+    border:none;
+}
+
+
+.notice .alert a {
+    text-decoration: none;
+    color: #2e1f41;
+}
+
+
+.payment {
+    margin-top: 2rem;
+}
+
+
+.payment .usdt {
+    padding: 8px;
+    background: linear-gradient(90deg, #744da0 0%, #a962f5 100%);
+    color: #fff;
+    width: fit-content;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600
+}
+
+
+.payment .usdt img {
+    width: 38px;
+    height: 38px;
+}
+
+
+.network-container {
+    margin-top: 2rem;
+}
+
+
+.select-network {
+    background-color: #fff;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+
+
+
+.select-network .heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+.select-network .heading p {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.select-network .heading i {
+    color: #744da0;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+}
+
+
+.select-network .networks .network {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #eceff4;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.select-network .networks .network:hover {
+    cursor: pointer;
+}
+
+
+.select-network .networks .network img {
+    width: 43px;
+}
+
+
+.select-network .networks .network.selected {
+    background: linear-gradient(90deg,#744da0 0%,#55208a 102.93%);
+    color: #fff;
+}
+
+
+
+.choose-amount-container {
+    margin-top: 2em;
+}
+
+.choose-amount {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.choose-amount h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+
+.choose-amount .quick-select .first-row, .choose-amount .quick-select .second-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.choose-amount .quick-select .btn {
+    width: 33%;
+    font-weight: 500;
+    transition: all 0.3s linear-;
+}
+
+
+.choose-amount .quick-select .btn.selected {
+    background: linear-gradient(90deg, #55208a 0%, #744da0 100%) !important;
+    color: #fff;
+}
+
+
+.choose-amount .amount {
+    background-color: #eceff4 !important;
+    border-radius: 5px;
+}
+
+
+.choose-amount .amount .input-group-text {
+    font-weight: 700;
+    font-size: 20px;
+    color: #744da0;
+}
+
+.choose-amount .amount input {
+    background-color: #eceff4;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+
+.choose-amount .amount input:focus {
+    outline: none;
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+}
+
+
+.deposit-form .submit-btn {
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #744da0;
+    color: #fff;
+    padding: 10px;
+}
+
+
+.deposit-form .submit-btn {
+    cursor: pointer;
+}
+
+
+
+.deposit-instructions {
+    margin-top: 2rem;
+}
+
+
+.instructions {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+.instructions h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.instructions .instructions-list {
+    font-size: 12px;
+    border: 0.5px solid #d6d6d6 ;
+    border-radius: 10px;
+    padding: 15px 15px 20px 30px;
+}
+
+
+.instructions .instructions-list  li {
+    margin-bottom: 1rem;
+}
+
+
+.records-container {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+}
+
+
+.deposit-report {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+
+
+.deposit-report h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+
+.deposit-table th{
+    color: #363636;
+}
+
+
+.deposit-table{
+    font-size: 13px;
+}
+
+
+
+.table .badge.Pending {
+    color: #664d03;
+    background-color: #fff3cd;
+}
+
+
+.table .badge.Successful {
+    color: #0a3622;
+    background-color: #cfe2ff;
+}
+
+
+.table .badge.Failed {
+    color: #58151c;
+    background-color: #f8d7da;
+}

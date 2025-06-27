@@ -1,0 +1,192 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/deposit.css' %}">
+{% endblock css %}
+{% block header %}
+<header>
+    <div class="parts text-start">
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title parts text-center">
+        Deposit
+    </div>
+
+    <div class="parts text-end"><a href="{% url 'deposit_issue' %}">record</a></div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="balance-container">
+    <div class="container">
+        <div class="balance-card">
+            <div class="top">
+                <div class="icon-area me-2">
+                    <i class="bi bi-wallet-fill"></i>
+                </div>
+                balance
+            </div>
+
+            <div>
+                <p class="balance">${{request.user.wallet.balance|floatformat:2|intcomma}}</p>
+            </div>
+
+
+            <div class="bottom">
+                <img src="{% static 'account/img/chip.webp' %}" alt="">
+                <div>
+                    <span class="me-2">****</span>
+                    <span>****</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="notice">
+    <div class="container">
+        <div class="alert alert-info">
+            <div>Deposit not credited?</div>
+            <span><a href="{% url 'deposit_issue' %}">report here ></a></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="payment">
+    <div class="container">
+        <div class="usdt shadow-sm">
+            <img src="{% static 'account/img/usdt-icon.webp' %}" alt="">
+            <div class="mt-1">USDT PAYMENT</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="network-container">
+    <div class="container">
+        <div class="select-network mb-4">
+            <div class="heading">
+                <i class="bi bi-lightning-fill"></i>
+                <p class="ms-2">Select network</p>
+            </div>
+
+            <div class="networks">
+                <div class="mb-2 network selected" id='selectTrc'>
+                    <img src="{% static 'account/img/usdt-trc.webp' %}" alt="">
+                    <div class="ms-3">
+                        <div>Tether(USDT)</div>
+                        <div>Tron-TRC20</div>
+                    </div>
+                </div>
+
+                <div class="network" id="selectErc">
+                    <img src="{% static 'account/img/usdt-erc.webp' %}" alt="">
+                    <div class="ms-3">
+                        <div>Tether(USDT)</div>
+                        <div>Etherum-ERC20</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="choose-amount-container">
+    <form class="container deposit-form" id="depositForm" method="post">
+        {% csrf_token %}
+        <div class="choose-amount">
+            <h4>Choose the amount to deposit</h4>
+
+            <div class="quick-select mt-4">
+                <div class="first-row mb-3">
+                    <button data-amount="20" type="button" class="selectamount btn btn-outline-success shadow-sm">$20</button>
+                    <button data-amount="50" type="button" class="selectamount btn btn-outline-success shadow-sm">$50</button>
+                    <button data-amount="100" type="button" class="selectamount btn btn-outline-success shadow-sm">$100</button>
+                </div>
+                <div class="second-row">
+                    
+                    <button data-amount="200" type="button" class="selectamount btn btn-outline-success shadow-sm">$200</button>
+                    <button data-amount="500" type="button" class="selectamount btn btn-outline-success shadow-sm">$500</button>
+                    <button data-amount="1000" type="button" class="selectamount btn btn-outline-success shadow-sm">$1000</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="usdt_network" value="trc" id="usdtNetwork">
+            <div class="input-group amount mt-4">
+                <span class="input-group-text px-3">$</span>
+                <input type="text" class="form-control" id="amountInput" aria-label="Amount (to the nearest dollar)">
+            </div>
+        </div>
+        <button type="submit" class="submit-btn mt-3">Deposit</button>
+    </form>
+</div>
+
+<div class="deposit-instructions">
+    <div class="container">
+        <div class="instructions">
+            <h4>Deposit instructions</h4>
+
+            <ul class="instructions-list mt-3 mb-0">
+                <li>If the transfer has expired, please regenerate the top-up order.</li>
+                <li>The transfer amount must be consistent with the order you created, otherwise the funds cannot be updated successfully.</li>
+                <li>If you transfer the created amount by mistake, our company will not be responsible for the lost amount!</li>
+                <li>Note: Do not cancel the deposit order after the remittance is complete.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="records-container">
+    <div class="container">
+        <div class="deposit-report">
+            <h4 class="ms-2 mb-3">Recent deposits</h4>
+            {% if deposits %}
+            <div class="table-responsive">
+                <table class="table table-hover deposit-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for deposit in deposits %}
+                        <tr>
+                          <th>${{deposit.amount|floatformat:2|intcomma}}</th>
+                          <td><span class="badge {{deposit.status}}">{{deposit.status}}</span></td>
+                          <td>{{deposit.date}}</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+            {% else %}
+            <div class="text-center empty">
+                <div class="no-records">
+                  <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                  <p class="mt-2 mb-0">no data</p>
+                </div>
+                <div class="space">
+      
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if deposits %}
+            <div class="px-2">
+                <a href="{% url 'deposit_history' %}" class="btn btn-outline-success w-100">View deposits</a>
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'account/js/deposit.js' %}"></script>
+{% endblock scripts %}

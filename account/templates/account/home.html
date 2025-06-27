@@ -1,0 +1,565 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/home.css' %}">
+{% endblock css %}
+{% block announcement %}
+<div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title text-right fs-5" id="exampleModalLabel">Announcement</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-body-announcement bg-white mx-3">
+        Welcome to <span class="thicken">Lucky Quest</span> . We solemnly promise that this platform will never be closed! <span class="spacer"></span>
+        1. Registration gift: <span class="thicken">5 USDT</span> , minimum deposit: <span class="thicken">20 USDT</span>
+        The minimum fee is <span class="thicken">20 USDT</span> . <span class="spacer"></span> Minimum withdrawal <span class="thicken">50 USDT</span> <br> <br>
+        <span class="thick">Company official website</span>: https://{{request.get_host}}/register/{{request.user.referral.invitation_code}} <span class="spacer"></span>
+        <span class="thick">Telegram Customer Service</span>: {{telegram_customer_service}} <span class="spacer"></span>
+        <span class="thick">Telegram channel</span>: {{telegram_channel}} <br><br>
+        
+        2. <span class="thicken">Lucky Quest</span> is now open to individual users.
+        Anyone can invest in paid,
+        And automatic payments are made to your account 24 hours a day. <br> <br>
+        3. Funds are monitored and managed by JPMorgan Chase Bank to avoid damage to investors' funds. <br> <br>
+        4. Investment and income: <span class="spacer"></span>
+        <span class="thicken">VIP-1</span> recharge <span class="thick">20 USDT</span> , daily earn <span class="thick">2.5 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-2</span> recharge <span class="thick">100 USDT</span>, daily earn <span class="thick">13 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-3</span> recharge <span class="thick">300 USDT</span>, daily earn <span class="thick">38 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-4</span> recharge <span class="thick">800 USDT</span>, daily earn <span class="thick">108 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-5</span> recharge <span class="thick">2000 USDT</span>, daily earn <span class="thick">268 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-6</span> recharge <span class="thick">5000 USDT</span>, daily earn <span class="thick">700 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-7</span> recharge <span class="thick">10000 USDT</span>, daily earn <span class="thick">1500 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-8</span> recharge <span class="thick">20000 USDT</span>, daily earn <span class="thick">3000 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-9</span> recharges <span class="thick">50000 USDT</span>, daily earn <span class="thick">8000 USDT</span> <span class="spacer"></span>
+        <span class="thicken">VIP-10</span> recharges <span class="thick">80000 USDT</span>, daily earn <span class="thick">14000 USDT</span> <br> <br>
+
+        5. Rewards for inviting friends: <span class="spacer"></span>
+        When the team uses your invitation code to register and load, the three-Stage commission ratio is as follows: <span class="spacer"></span>
+        <span class="thicken">10%</span>  for <span class="thicken">VIP-1</span> members, for example, if <span class="thicken">VIP-1</span> members recharge <span class="thicken">1000 USDT</span> , you will get 100 USDT <span class="spacer"></span>
+        <span class="thicken">3%</span>  for <span class="thicken">VIP-2</span> members, for example, if <span class="thicken">VIP-2</span> members recharge <span class="thicken">1000 USDT</span>, you will get <span class="thicken">30 USDT</span> <span class="spacer"></span>
+        <span class="thicken">1% </span>for <span class="thicken">VIP-3</span> members, for example, if a <span class="thicken">VIP-3</span> member recharges <span class="thicken">1000 USDT</span>, you will get <span class="thicken">10 USDT</span> <br> <br>
+
+        6. Super broker team daily full reward policy <span class="spacer"></span>
+        Within 24 hours, the total team deposit is <span class="thicken">500 USDT</span>, and the reward is <span class="thicken">16 USDT</span>. <span class="spacer"></span>
+        Within 24 hours, the total team deposit is <span class="thicken">3000 USDT</span>, and the reward is <span class="thicken">100 USDT</span>. <span class="spacer"></span>
+        Within 24 hours, the total team deposit is <span class="thicken">8000 USDT</span>, and the reward is <span class="thicken">500 USDT</span>. <span class="spacer"></span>
+        Within 24 hours, the team deposited a total of <span class="thicken">20,000</span> USDT and rewarded <span class="thicken">1800 USDT</span>. <span class="spacer"></span>
+        Within 24 hours, the total team deposit is <span class="thicken">50,000 USDT</span>, and the reward is <span class="thicken">6000 USDT</span>. <br> <br>
+
+        Note: If you are eligible, please contact customer service within 24 hours to claim the reward. When the
+        period expires, <span class="spacer"></span>
+        It will be considered invalid and your team must recalculate within 24 hours. <br><br>
+
+        Disclaimer <span class="spacer"></span>
+        1. In order to facilitate the uploading and withdrawal needs of users from different countries,
+        The platform likewise uses USDT as a single channel for deposits and withdrawals. <span class="spacer"></span>
+        2. The contract period is 365 days. After the contract expires, the contract amount will be refunded to your
+        account. <br> <br>
+
+        After the contract expires, if the contract is renewed. This amount cannot be withdrawn during the contract
+        period.
+      </div>
+      <div class="modal-footer d-grid gap-2 mx-auto">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Know</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock announcement %}
+{% block header %}
+<header class="header">
+  <nav class="top-navbar">
+
+    <a class="logo-area" href="{% url 'home' %}">     
+      <div class="img-area me-1">
+        <img src="{% static 'account/img/logo.png' %}" alt="">
+      </div>
+      Luckyquestmall.com
+    </a>
+
+  <div class="support-container" id="supportIcon">
+      <i class="bi bi-headset"></i> Support
+  </div>
+  </nav>
+
+  <div class="header-text-container">
+    <h1 class="header-text">Save <span>time</span>, <br> Save <span>money</span></h1>
+  </div>
+
+
+  <div type="button" data-bs-toggle="modal" data-bs-target="#announcementModal" id="newsBar" class="news-container">
+    <div class="speaker-icon">
+      <i class="bi bi-megaphone"></i>
+    </div>
+
+    <div class="news-right-end">
+    </div>
+
+    <ul>
+      <li>
+        Welcome to Lucky Quest. We solemnly promise that this platform will never be closed!
+        1. Registration gift: 80 USDT, minimum deposit: 20 USDT
+        The minimum fee is 20 USDT. Minimum withdrawal 50 USDT
+        Company official website: https://{{request.get_host}}/register/{{request.user.referral.invitation_code}}
+        Telegram Customer Service: {{telegram_customer_service}}
+        Telegram channel: {{telegram_channel}}
+        2. Lucky Quest is now open to individual users.
+        Anyone can invest in paid,
+        And automatic payments are made to your account 24 hours a day.
+        3. Funds are monitored and managed by JPMorgan Chase Bank to avoid damage to investors' funds.
+        4. Investment and income:
+        VIP-1 recharge 20 USDT, daily earn 2.5USDT
+        VIP-2 recharge 100USDT, daily earn 13USDT
+        VIP-3 recharge 300USDT, daily earn 38USDT
+        VIP-4 recharge 800USDT, daily earn 108USDT
+        VIP-5 recharge 2000USDT, daily earn 268USDT
+        VIP-6 recharge 5000USDT, daily earn 700USDT
+        VIP-7 recharge 10000USDT, daily earn 1500USDT
+        VIP-8 recharge 20000USDT, daily earn 3000USDT
+        VIP-9 recharges 50000USDT, daily earn 8000USDT
+        VIP-10 recharges 80000USDT, daily earn 14000USDT
+
+        5. Rewards for inviting friends:
+        When the team uses your invitation code to register and load, the three-Stage commission ratio is as follows:
+        10% for VIP-1 members, for example, if VIP-1 members recharge 1000 USDT, you will get 100 USDT
+        3% for VIP-2 members, for example, if VIP-2 members recharge 1000 USDT, you will get 30 USDT
+        1% for VIP-3 members, for example, if a VIP-3 member recharges 1000 USDT, you will get 10 USDT
+
+        6. Super broker team daily full reward policy
+        Within 24 hours, the total team deposit is 500 USDT, and the reward is 16 USDT.
+        Within 24 hours, the total team deposit is 3000 USDT, and the reward is 100 USDT.
+        Within 24 hours, the total team deposit is 8000 USDT, and the reward is 500 USDT.
+        Within 24 hours, the team deposited a total of 20,000 USDT and rewarded 1800 USDT.
+        Within 24 hours, the total team deposit is 50,000 USDT, and the reward is 6000 USDT.
+
+        Note: If you are eligible, please contact customer service within 24 hours to claim the reward. When the
+        period expires,
+        It will be considered invalid and your team must recalculate within 24 hours.
+
+        disclaimer
+        1. In order to facilitate the uploading and withdrawal needs of users from different countries,
+        The platform likewise uses USDT as a single channel for deposits and withdrawals.
+        2. The contract period is 365 days. After the contract expires, the contract amount will be refunded to your
+        account.
+        After the contract expires, if the contract is renewed. This amount cannot be withdrawn during the contract
+        period. </li>
+    </ul>
+  </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="py-4">
+  <div class="container">
+    <div class="row actions">
+
+      <div class="col-4">
+        <a href="{% url "deposit" %}">
+          <div class="outer-border">
+            <div class="circle">
+              <i class="bi bi-coin"></i>
+            </div>
+          </div>
+          <p>Recharge</p>
+        </a>
+      </div>
+
+
+      <div class="col-4">
+        <a href="{% url "withdrawal" %}">
+          <div class="outer-border">
+            <div class="circle">
+              <i class="bi bi-cash-stack"></i>
+            </div>
+          </div>
+          <p>Withdraw</p>
+        </a>
+      </div>
+
+
+      <div class="col-4">
+        <a href="{% url "about" %}">
+          <div class="outer-border">
+            <div class="circle">
+              <i class="bi bi-buildings"></i>
+            </div>
+          </div>
+          <p>Company</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="">
+  <div class="container" id="carousel1">
+    <div class="owl-carousel owl-theme">
+
+      <div class="item carousel-img-area">
+        <img src="{% static 'account/img/img-1.webp' %}" alt="">
+      </div>
+
+      <div class="item carousel-img-area">
+        <img src="{% static 'account/img/img-2.webp' %}" alt="">
+      </div>
+
+      <div class="item carousel-img-area">
+        <img src="{% static 'account/img/img-3.webp' %}" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<section class="py-4">
+  <div class="container">
+    <h5 class="mb-3 section-title">Task Hall</h5>
+    <div class="row g-2">
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 1 %}href="{% url 'upgrade_tier' 'vip-1' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 1 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 1</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">$20.00</p>
+        </div>
+        </a>
+      </div>
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 2 %}href="{% url 'upgrade_tier' 'vip-2' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 2 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 2</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">$100.00</p>
+        </div>
+        </a>
+      </div>
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 3 %}href="{% url 'upgrade_tier' 'vip-3' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 3 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 3</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">$300.00</p>
+        </div>
+        </a>
+      </div>
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 4 %}href="{% url 'upgrade_tier' 'vip-4' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 4 %}  
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 4</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">$800.00</p>
+        </div>
+        </a>
+      </div>
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 5 %}href="{% url 'upgrade_tier' 'vip-5' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 5 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 5</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{2000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 6 %}href="{% url 'upgrade_tier' 'vip-6' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 6 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 6</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{5000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 7 %}href="{% url 'upgrade_tier' 'vip-7' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 7 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 7</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{10000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a  {% if request.user.wallet.tier < 8 %}href="{% url 'upgrade_tier' 'vip-8' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 8 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 8</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{20000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 9 %}href="{% url 'upgrade_tier' 'vip-9' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 9 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 9</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{50000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+
+
+      <div class="col-6">
+        <div class="single-item shadow">
+          <a {% if request.user.wallet.tier < 10 %}href="{% url 'upgrade_tier' 'vip-10' %}"{% else %}href="{% url 'vip'  %}"{% endif %}>
+            <div class="item-img-area">
+              <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+              {% if request.user.wallet.tier < 10 %}
+              <div class="lock-img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+              </svg>
+            </div>
+            {% endif %}
+            </div>
+            <h6>VIP 10</h6>
+            <p class="unlock">Unlock amount</p>
+            <p class="price">${{80000.00|intcomma}}</p>
+        </div>
+        </a>
+      </div>
+
+
+      
+
+    </div>
+  </div>
+</section>
+
+
+<section class="pb-4">
+  <div class="container">
+    <h5 class="mb-3 section-title">Member list</h5>
+
+    <div class="member-list-items" id="listItems">
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="pb-5 mb-5">
+  <div class="container" id="carousel2">
+    <h5 class="mb-3 section-title">Regulatory Authority</h5>
+
+    <div class="owl-carousel owl-theme">
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-1.webp' %}" alt="">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-2.webp' %}" alt="">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-3.webp' %}" alt="">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-4.webp' %}" alt="">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-5.webp' %}" alt="">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'account/img/authority-6.webp' %}" alt="">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock content %}
+{% block scripts %}
+
+<script>
+  $('#carousel1 .owl-carousel').owlCarousel({
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsiveBaseElement: 'body',
+    responsive: {
+      0: {
+        items: 1,
+      },
+      700: {
+        items: 1,
+      },
+      1220: {
+        items: 1,
+      },
+    },
+  });
+
+
+  $('#carousel2 .owl-carousel').owlCarousel({
+    items: 2,
+    loop: true,
+    margin: 20,
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      700: {
+        items: 1,
+      },
+      1220: {
+        items: 1,
+      },
+    },
+  });
+</script>
+{% endblock scripts %}
+

@@ -1,0 +1,104 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/deposit_issue.css' %}">
+{% endblock css %}
+{% block header %}
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="orderModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="order-numbers">
+            {% for order in orders %}
+            <li onclick="selectOrder('{{order.transaction_id}}')">{{order.transaction_id}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<header>
+    <div>
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title">
+        Deposit issue
+    </div>
+
+    <div></div>
+</header>
+
+<div class="page mt-3">
+    <div class="container">
+        <div class="title">Your deposit has not yet been credited to your account?</div>
+
+        <div class="alert alert-warning warning mt-3" role="alert">
+            Please choose your payment order number from the options below and add your detailed payment voucher. For faster resolution of your issue, please provide detailed payment receipts, and you may upload multiple receipts if necessary.
+          </div>
+    </div>
+</div>
+{% endblock header %}
+{% block content %}
+<div class="deposit-issue mt-5">
+    <div class="container">
+        <form action="" id="depositIssue" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="mb-4 order-number-input">
+                <label for="order-number" class="form-label" >Please choose the order number</label>
+                <input type="text" id="orderNumber" class=" form-control order-number" name="ordernumber" readonly data-bs-toggle="modal" data-bs-target="#orderModal">
+                <i class="bi bi-chevron-down"></i>
+            </div>
+
+        
+            <div class="mb-4">
+                <label for="trn" class="form-label">TRN number <i class="bi bi-info-circle-fill" data-bs-toggle="tooltip" data-bs-title="A Transaction Reference Number (TRN) is a unique combination of letters and numbers assigned to every financial transaction"></i></label>
+                <input type="text" id="trn" class="trn form-control" name="trn">
+            </div>
+
+
+            <div class="mb-4">
+                <label for="recipient-account" class="form-label">Recipient's bank account</label>
+                <input type="text" id="recipientAccount" class="trn form-control" name="recipient_account">
+            </div>
+
+
+            <div class="mb-4">
+                <label for="message" class="form-label">Your question</label>
+                <textarea class="form-control" name="message" rows="6" placeholder="Please enter your question description (you can choose not to enter)" id="message"></textarea>
+            </div>
+
+
+            <div class="mb-5">
+                <label for="proof" class="form-label">Upload proof of payment </label>
+                <input type="file" class="form-control" name="proof" id="proof">
+            </div>
+
+            <button class="submit-btn mb-3">Submit</button>
+
+
+            <ol class="guildlines">
+                <li>Submit your order for a quick transaction, no need to contact customer service.</li>
+                <li>If your deposit is not credited within 5 minutes, you can select the order and upload detailed payment proofs (multiple uploads allowed). After uploading, click submit and wait for 10 minutes, our professionals will handle it</li>
+                <li>If you have uploaded and waited for 10 minutes and the transaction is still not credited, you can submit again or contact customer service.</li>                
+            </ol>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+<script src="{% static 'account/js/deposit_issue.js' %}"></script>
+{% endblock scripts %}

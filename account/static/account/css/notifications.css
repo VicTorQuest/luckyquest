@@ -1,0 +1,141 @@
+.header {
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.notifications {
+    margin-top: 2rem;
+}
+
+
+.notifications .message {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+
+
+.notifications .message .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.notifications .message .top .notice-header {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .message .top .notice-header h5 {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.notifications .message .top .del-notice:hover {
+    cursor: pointer;
+}
+
+.notifications .message .top .del-notice i {
+    color: #55208a;
+}
+
+.notifications .message .icon i {
+    font-size: 25px;
+    color: #744da0;
+} 
+
+.notifications .message .icon i.read {
+    opacity: 0.5;
+}
+
+.notifications .message .icon i::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* .notifications .message .icon i.read {
+    color: #7e7e7e;
+} */
+
+.notifications .message .text {
+    margin-top: 0.8rem;
+}
+
+
+.notifications .message .bottom {
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #212529;
+}
+
+
+
+.notifications .message .bottom .seen {
+    display: flex;
+    align-items: center;
+}
+
+
+.notifications .message .bottom .seen i {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #55208a;
+}
+
+.btn-close:active, .btn-close:focus {
+    box-shadow: none !important;
+}
+
+.modal-content {
+    background: #fff;
+}
+
+
+.modal-content #confirmDeleteModalLabel {
+    font-size: 18px !important;
+}
+
+@media screen and (max-width:500px) {
+    .notifications .message {
+        background: #fff;
+        border-radius: 9px;
+        padding: 10px;
+    }
+    
+    
+    .notifications .message .top .notice-header h5 {
+        font-size: 16px;
+    }
+    
+    .notifications .message .icon i {
+        font-size: 20px;
+    } 
+
+
+    .notifications .message small {
+        font-size: 12px;
+    }
+
+    .notifications .message .text {
+        font-size: 12px;
+    }
+}

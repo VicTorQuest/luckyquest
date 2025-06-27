@@ -1,0 +1,123 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+}
+
+
+header i {
+    color: black;
+}
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.page .title {
+    font-weight: 600;
+    font-size: 22px;
+}   
+
+.page .warning {
+    font-size: 16px;
+}
+
+
+.order-number-input {
+    position: relative;
+}
+
+
+.order-number-input i {
+    position: absolute;
+    bottom:  2.5px;
+    right: 10px;
+    font-size: 25px;
+}
+
+
+
+.form-control {
+     padding: 10px 14px;
+     border-radius: 10px;
+}
+
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 .25rem rgb(116, 77, 160, .25) !important;
+}
+
+
+.deposit-issue {
+    margin-bottom: 10rem;
+}
+
+
+.submit-btn {
+    background: linear-gradient(to right, #744da0, #55208a);
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 13px;
+    color: #eceff4;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.submit-btn:hover {
+    color: #ffffff;
+}
+
+.submit-btn:active, .submit-btn:focus {
+    color: #eceff4 !important;
+}
+
+
+#depositIssue .guildlines {
+    font-size: 14px;
+    padding-left: 1rem;
+}
+
+
+#orderNumber:hover {
+    cursor: pointer;
+}
+
+#orderModal .modal-content {
+    background-color: #ffffff;
+}
+
+#orderModal .order-numbers {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+}
+
+#orderModal .order-numbers li {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #323233;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+#orderModal .order-numbers li:hover {
+    cursor: pointer;
+    background: #f5f5f5;
+}
+
+
+.form-label i {
+    color: #744da0;
+}
+
+
+.form-label i:hover {
+    cursor: pointer;
+}

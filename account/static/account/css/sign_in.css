@@ -1,0 +1,185 @@
+.header-text-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 34px;
+    width: 100%;
+    opacity: 0.4;
+    height: 200px;
+    background: none;
+    background-size: 100% 100%;
+}
+
+
+.nav-link {
+    color: #744da0;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #55208a;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #744da0;
+}
+
+
+.form-control {
+    border: none !important;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid #55208a !important;
+    padding: 10px;
+}
+
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none
+}
+
+.phone-input {
+    border: none !important;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid #55208a !important;
+    padding: 10px 10px 10px 0;
+    
+}
+
+.phone-input input {
+    border: none !important;
+    padding: 0;
+}
+
+.input-phone-select {
+    cursor: pointer;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.submit-btn {
+    background: linear-gradient(to right, #744da0, #55208a);
+    color: #eceff4;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.submit-btn:hover, .submit-btn:active {
+    color: #ffffff !important;
+}
+
+
+.forget_password {
+    color: #55208a;
+    font-size: 12px;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.sign_up_link {
+    text-decoration: none;
+    color: #55208a;
+}
+
+.password-strength {
+    display: none;
+}
+
+.password-strength .badge {
+    display: block;
+    width: 25px !important;
+    background-color: #98989a;
+    transition: all 0.3s linear;
+}
+
+.password-strength .badge.one.checked {
+    background-color: rgba(136, 100, 174, 0.7) !important;
+}
+
+.password-strength .badge.two.checked {
+    background-color: rgb(136, 100, 174) !important;
+}
+
+
+.password-strength .badge.three.checked {
+    background-color: rgb(94, 58, 133) !important;
+}
+
+.password-group {
+    position: relative;
+}
+
+.toggle-password-email, .toggle-password-phone {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    bottom: 25px;
+    right: 10px;
+    z-index: 100;
+    color: #55208a;
+    font-size: 20px;
+}
+
+
+.country-code-search {
+    border: 1px solid rgb(134,144,156);
+    padding: 0 10px 0 10px;
+    border-radius: 12px;
+    height: 40px;
+}
+
+
+.btn-close:active, .btn-close:focus {
+    box-shadow: none !important;
+}
+
+
+.country-code-search input {
+    border: none;
+    margin-left: 10px;
+}
+
+
+.country-code-search input:active, .country-code-search input:focus {
+    border: none;
+    outline: none;
+}
+
+.country-code-list {
+    padding: 0;
+}
+
+.country-code-list li {
+    cursor: pointer;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #98989a;
+    display: flex;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+
+
+.country-code-list li:hover {
+    background-color: #eceff4;
+}
+
+.country-code-list li .italic {
+    font-size: 12px !important;
+}
+
+
+.country-code-list .selected {
+    color: #55208a;
+}
+
+.country-code-list .selected .bi-check-circle-fill {
+    color: #744da0;
+}

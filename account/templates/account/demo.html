@@ -1,0 +1,251 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/process_deposit.css' %}">
+{% endblock css %}
+{% block header %}
+<header>
+    <div>
+        <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+    </div>
+
+    <div class="title">
+        Recharge 
+    </div>
+
+    <div></div>
+</header>
+{% endblock header %}
+{% block content %}
+<section class="container pb-5">
+    <div class="">
+        <div class="invoice">
+            <div class="text-center">
+                <img src="{% static 'account/img/logo-icon-light.webp' %}" class="" alt="">
+                <h4 class="mt-3">{{domain_name}}</h4>
+                <p class="mt-3">Scan the Qr code or copy and paste the payment details into your wallet</p>
+            </div>
+
+            {% if transaction.status == 'Pending' %}
+            <div class="mt-4 main-invoice">
+                <div>
+                    <div class="row">
+                        <div class="col-6 py-3 awaiting d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                              </div> <span class="ms-2">{% if transaction.proof_of_payment %}Processing Payment...{% else %}Awaiting Payment...{% endif %}</span>
+                        </div>
+                        {% if transaction.proof_of_payment %}
+                        <div class="col-6 py-3 awaiting text-end">
+                            0.00
+                        </div>
+                        
+                        {% else %}
+                        <div class="col-6 py-3 awaiting text-end" id="timer">
+                            0.00
+                        </div>
+                        {% endif %}
+                        <div class="col-6 py-3">
+                            Paying With
+                        </div>
+                        
+                        <div class="col-6 py-3 d-flex justify-content-end">
+                            <div class="img-area">
+                                <img src="{% static 'account/img/usdt-icon.webp' %}" alt="">
+                            </div>
+                            <div class="ms-2 currency">
+                                <h6 class="mb-1">Tether(ERC-20)</h6>
+                                <small>USDT</small>
+                            </div>
+                        </div>
+                        <progress id="progressBar" value="30" max="100"></progress>
+                        <div class="col-12 p-5 qr-code-container">
+                            <div class="qr-code-area mx-auto my-auto">
+                                <img src="{{wallet.ERC_QRCODE_IMAGE_LINK}}" class="w-100" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-6 invoice-details py-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 pl-0 border-0 address-input" readonly value="Address" placeholder="Address text" aria-label="Address text" aria-describedby="button-addon2">
+                               
+                            </div>
+                        </div>
+                        <div class="col-6 py-2 invoice-details text-end">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 border-0 address-input" id="walletAddress" readonly value="{{wallet.usdt_wallet_address}}" placeholder="wallet address" aria-label="wallet address" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                  <button class="btn copy-btn py-0 pr-0 border-0" type="button" onclick="copyaddress()" id="button-addon2"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 py-3 invoice-details">
+                            Total Price
+                        </div>
+                        <div class="col-6 py-3 invoice-details text-end">
+                            ${{transaction.amount|floatformat:2|intcomma}}
+                        </div>
+
+                        <div class="col-6 py-3 invoice-details">
+                            Exchange Rate
+                        </div>
+                        <div class="col-6 py-3 invoice-details text-end">
+                            1 USDT @ ${{exchange_rate|floatformat:2|intcomma}}
+                        </div>
+
+                        <div class="col-6 invoice-details py-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 pl-0 border-0  amount-due" readonly value="Amount Due" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                               
+                            </div>
+                        </div>
+                        <div class="col-6 py-2 invoice-details text-end">
+                            <div class="input-group">
+                                <input type="text" id="amountDue" class="form-control py-0 border-0 pr-1 amount-due amount-due-value text-end" readonly value="{{transaction.value}}" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text border-0 amount-due amount-due-btn pl-1">USDT</span>
+                                  <button class="btn copy-btn py-0 pr-0 border-0" onclick="copyamount()" type="button" id="button-addon2"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if transaction.proof_of_payment %}
+                        
+                        {% else %}
+                        <div class="col-12 py-4">
+                            <form method="post" enctype="multipart/form-data" id="submitform">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="inputGroupFileAddon01">Payment Proof</span>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" name="payment_proof" class="custom-file-input" id="inputGroupFile01">
+                                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>      
+                                <button type="submit" id="submitbtn" class="btn primary-btn btn-lg btn-block mt-2 text-white d-flex align-items-center justify-content-center">Confirm Payment</button>
+                            </form>
+                                                    
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                
+            </div>
+            {% elif transaction.status == 'Successful' %}
+            <div class="row mt-4 main-invoice">
+                <div class="col-md-12 mx-auto">
+                    <div class="row">
+                        <div class="col-12 py-2 text-white bg-success">
+                            Transaction Completed
+                        </div>
+                       
+                        <div class="col-6 py-3 border-bottom">
+                            Paid With
+                        </div>
+                        
+                        <div class="col-6 py-3 d-flex justify-content-end border-bottom">
+                            <div class="img-area">
+                                <img src="{% static 'store/img/usdt-icon.webp' %}" alt="">
+                            </div>
+                            <div class="ms-2 currency">
+                                <h6>Tether(ERC-20)</h6>
+                                <small>USDT</small>
+                            </div>
+                        </div>
+                        <div class="col-12 p-5 qr-code-container">
+                            <div class="qr-code-area mx-auto my-auto border-0">
+                                <i class="fa fa-check-circle-o w-100" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-6 invoice-details py-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 pl-0 border-0 address-input" readonly value="Address" placeholder="Address text" aria-label="Address text" aria-describedby="button-addon2">
+                               
+                            </div>
+                        </div>
+                        <div class="col-6 py-2 invoice-details text-end">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 border-0 address-input" id="walletAddress" readonly value="{{wallet.usdt_wallet_address}}" placeholder="wallet address" aria-label="wallet address" aria-describedby="button-addon2">
+                               
+                            </div>
+                        </div>
+
+                        <div class="col-6 py-3 invoice-details">
+                            Total Price
+                        </div>
+                        <div class="col-6 py-3 invoice-details text-end">
+                            ${{transaction.amount|floatformat:2|intcomma}}
+                        </div>
+
+                        <div class="col-6 py-3 invoice-details">
+                            Exchange Rate
+                        </div>
+                        <div class="col-6 py-3 invoice-details text-end">
+                            1 USDT @ ${{exchange_rate|floatformat:2|intcomma}}
+                        </div>
+
+                        <div class="col-6 invoice-details py-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control py-0 pl-0 border-0  amount-due" readonly value="Amount Due" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                               
+                            </div>
+                        </div>
+                        <div class="col-6 py-2 invoice-details text-end">
+                            <div class="input-group">
+                                <input type="text" id="amountDue" class="form-control py-0 border-0 pr-1 amount-due amount-due-value text-end" readonly value="{{transaction.value}}" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                              
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+            {% elif transaction.status == 'Failed' %}
+            <div class="row mt-4 main-invoice">
+                <div class="col-md-12 mx-auto">
+                    <div class="row">
+                        <div class="col-6 py-3 bg-danger text-white d-flex align-items-center">
+                            Invoice Expired
+                        </div>
+                        <div class="col-6 py-3 bg-danger text-white text-end">
+                            0:00
+                        </div>
+                       
+                    
+                        <div class="col-12 py-4">
+                            
+                           <p>Payment window for this invoice has closed. Your invoice has expired due to non-payment, please reinitiate the payment process.</p>
+                                                    
+                        </div>
+                
+
+                        <div class="col-12 py-4">
+                            
+                            <a  href="{% url 'fund_account' %}" class="btn primary-btn btn-lg btn-block mt-2 text-white">Return to Top Up</a>
+                                                    
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+            {% endif %}
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

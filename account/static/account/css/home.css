@@ -1,0 +1,22 @@
+.header {
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+.modal-body-announcement .spacer {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+
+.modal-body-announcement .thicken {
+  font-weight: 600;
+}
+
+.modal-body-announcement .thick {
+  font-weight: 500;
+}

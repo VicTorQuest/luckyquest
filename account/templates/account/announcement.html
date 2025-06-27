@@ -1,0 +1,87 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/announcememt.css' %}">
+<script src="{% static 'account/js/csrf.js' %}"></script>
+
+{% endblock css %}
+{% block header %}
+<header class="header">
+  <nav class="top-navbar">
+
+    <a class="logo-area" href="{% url 'home' %}">     
+      <div class="img-area me-1">
+        <img src="{% static 'account/img/logo.png' %}" alt="">
+      </div>
+      Luckyquestmall.com
+    </a>
+
+  <div class="support-container" id="supportIcon">
+      <i class="bi bi-headset"></i> Support
+  </div>
+  </nav>
+
+  <div class="header-text-container">
+    <h1 class="header-text"><span>Announcements</span>
+  </div>
+
+</header>
+{% endblock header %}
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="clickedMessageModal" tabindex="-1" aria-labelledby="clickedMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="clickedMessageModalLabel">Message</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-white mx-3" id="broadcastMessage">
+            ...
+        </div>
+        <div class="modal-footer justify-content-center" id="clickedMessageFooter">
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<section class="announcememts mb-5">
+    <div class="container">
+        <div class="messages">
+            {% for notification in notifications %}       
+            <div class="message mb-3" onclick="showBroadcastMessage('{{notification.id}}')">
+                <div class="top">
+                    <div class="icon">
+                        <i class="bi bi-megaphone-fill {% if notification.read %}read{% endif %}"></i>
+                    </div>
+                    <h5 class="subject">{{notification.subject}}</h5>
+                </div>
+
+                <div class="text mt-2">
+                    <p class="mb-0">{{notification.message|truncatechars:'100'}}</p>
+                
+                </div> 
+                <div class="bottom mt-3">
+                    <div><small>{{notification.broadcast_on}}</small></div>
+
+                    {% if notification.read %}
+                    <div class="seen"><i class="bi bi-check2-all me-1"></i> <small>seen</small></div>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        <div class="mt-4 pb-5 text-center">no more</div>
+    </div>
+</section>
+
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'account/js/announcement.js' %}"></script>
+{% endblock scripts %}

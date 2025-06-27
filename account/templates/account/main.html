@@ -1,0 +1,614 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luckyquestmall.com</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
+  <link href="{% static 'account/libs/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet" />
+
+
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title text-right fs-5" id="exampleModalLabel">Announcement</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-white mx-3">
+          Welcome to Price Chopper. We solemnly promise that this platform will never be closed!
+          1. Registration gift: 80 USDT, minimum deposit: 20 USDT
+          The minimum fee is 20USDT. Minimum withdrawal 2.5 USDT
+          Company official website: https://pricechoppermall.com/#/register?ic=612913
+          Telegram Customer Service: https://t.me/Pricechoppermallcom
+          Telegram channel: https://t.me/wwwPricechoppermallcom
+          2. Pricechopper is now open to individual users.
+          Anyone can invest in paid,
+          And automatic payments are made to your account 24 hours a day.
+          3. Funds are monitored and managed by JPMorgan Chase Bank to avoid damage to investors' funds.
+          4. Investment and income:
+          P-01 recharge 20 USDT, daily earn 2.5USDT
+          P-02 recharge 100USDT, daily earn 13USDT
+          P-03 recharge 300USDT, daily earn 38USDT
+          P-04 recharge 800USDT, daily earn 108USDT
+          P-05 recharge 2000USDT, daily earn 268USDT
+          P-06 recharge 5000USDT, daily earn 700USDT
+          P-07 recharge 10000USDT, daily earn 1500USDT
+          P-08 recharge 20000USDT, daily earn 3000USDT
+          P-09 recharges 50000USDT, daily earn 8000USDT
+          P-10 recharges 80000USDT, daily earn 14000USDT
+
+          5. Rewards for inviting friends:
+          When the team uses your invitation code to register and load, the three-Stage commission ratio is as follows:
+          10% for LVl members, for example, if LVl members recharge 1000 USDT, you will get 100 USDT
+          3% for LV2 members, for example, if LV2 members recharge 1000 USDT, you will get 30 USDT
+          1% for LV3 members, for example, if a LV3 member recharges 1000 USDT, you will get 10 USDT
+
+          6. Super broker team daily full reward policy
+          Within 24 hours, the total team deposit is 500 USDT, and the reward is 16 USDT.
+          Within 24 hours, the total team deposit is 3000 USDT, and the reward is 100 USDT.
+          Within 24 hours, the total team deposit is 8000 USDT, and the reward is 500 USDT.
+          Within 24 hours, the team deposited a total of 20,000 USDT and rewarded 1800 USDT.
+          Within 24 hours, the total team deposit is 50,000 USDT, and the reward is 6000 USDT.
+
+          Note: If you are eligible, please contact customer service within 24 hours to claim the reward. When the
+          period expires,
+          It will be considered invalid and your team must recalculate within 24 hours.
+
+          disclaimer
+          1. In order to facilitate the uploading and withdrawal needs of users from different countries,
+          The platform likewise uses USDT as a single channel for deposits and withdrawals.
+          2. The contract period is 365 days. After the contract expires, the contract amount will be refunded to your
+          account.
+          After the contract expires, if the contract is renewed. This amount cannot be withdrawn during the contract
+          period.
+        </div>
+        <div class="modal-footer d-grid gap-2 mx-auto">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Know</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <header class="header">
+    <nav class="top-navbar">
+
+      <div class="logo-area">
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </div>
+
+      <div class="support-container">
+        <i class="bi bi-headset"></i> Service
+      </div>
+    </nav>
+
+    <div class="header-text-container">
+      <h1 class="header-text">Save <span>time</span>, <br> Save <span>money</span></h1>
+    </div>
+
+
+    <div type="button" data-bs-toggle="modal" data-bs-target="#announcementModal" id="newsBar" class="news-container">
+      <div class="speaker-icon">
+        <i class="bi bi-megaphone"></i>
+      </div>
+
+      <div class="news-right-end">
+      </div>
+
+      <ul>
+        <li>
+          Welcome to Price Chopper. We solemnly promise that this platform will never be closed!
+          1. Registration gift: 80 USDT, minimum deposit: 20 USDT
+          The minimum fee is 20USDT. Minimum withdrawal 2.5 USDT
+          Company official website: https://pricechoppermall.com/#/register?ic=612913
+          Telegram Customer Service: https://t.me/Pricechoppermallcom
+          Telegram channel: https://t.me/wwwPricechoppermallcom
+          2. Pricechopper is now open to individual users.
+          Anyone can invest in paid,
+          And automatic payments are made to your account 24 hours a day.
+          3. Funds are monitored and managed by JPMorgan Chase Bank to avoid damage to investors' funds.
+          4. Investment and income:
+          P-01 recharge 20 USDT, daily earn 2.5USDT
+          P-02 recharge 100USDT, daily earn 13USDT
+          P-03 recharge 300USDT, daily earn 38USDT
+          P-04 recharge 800USDT, daily earn 108USDT
+          P-05 recharge 2000USDT, daily earn 268USDT
+          P-06 recharge 5000USDT, daily earn 700USDT
+          P-07 recharge 10000USDT, daily earn 1500USDT
+          P-08 recharge 20000USDT, daily earn 3000USDT
+          P-09 recharges 50000USDT, daily earn 8000USDT
+          P-10 recharges 80000USDT, daily earn 14000USDT
+
+          5. Rewards for inviting friends:
+          When the team uses your invitation code to register and load, the three-Stage commission ratio is as follows:
+          10% for LVl members, for example, if LVl members recharge 1000 USDT, you will get 100 USDT
+          3% for LV2 members, for example, if LV2 members recharge 1000 USDT, you will get 30 USDT
+          1% for LV3 members, for example, if a LV3 member recharges 1000 USDT, you will get 10 USDT
+
+          6. Super broker team daily full reward policy
+          Within 24 hours, the total team deposit is 500 USDT, and the reward is 16 USDT.
+          Within 24 hours, the total team deposit is 3000 USDT, and the reward is 100 USDT.
+          Within 24 hours, the total team deposit is 8000 USDT, and the reward is 500 USDT.
+          Within 24 hours, the team deposited a total of 20,000 USDT and rewarded 1800 USDT.
+          Within 24 hours, the total team deposit is 50,000 USDT, and the reward is 6000 USDT.
+
+          Note: If you are eligible, please contact customer service within 24 hours to claim the reward. When the
+          period expires,
+          It will be considered invalid and your team must recalculate within 24 hours.
+
+          disclaimer
+          1. In order to facilitate the uploading and withdrawal needs of users from different countries,
+          The platform likewise uses USDT as a single channel for deposits and withdrawals.
+          2. The contract period is 365 days. After the contract expires, the contract amount will be refunded to your
+          account.
+          After the contract expires, if the contract is renewed. This amount cannot be withdrawn during the contract
+          period. </li>
+      </ul>
+    </div>
+  </header>
+
+
+
+  <div class="py-4">
+    <div class="container">
+      <div class="row actions">
+
+        <div class="col-4">
+          <a href="">
+            <div class="outer-border">
+              <div class="circle">
+                <i class="bi bi-coin"></i>
+              </div>
+            </div>
+            <p>Recharge</p>
+          </a>
+        </div>
+
+
+        <div class="col-4">
+          <a href="">
+            <div class="outer-border">
+              <div class="circle">
+                <i class="bi bi-cash-stack"></i>
+              </div>
+            </div>
+            <p>Withdraw</p>
+          </a>
+        </div>
+
+
+        <div class="col-4">
+          <a href="">
+            <div class="outer-border">
+              <div class="circle">
+                <i class="bi bi-buildings"></i>
+              </div>
+            </div>
+            <p>Company</p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="">
+    <div class="container" id="carousel1">
+      <div class="owl-carousel owl-theme">
+
+        <div class="item carousel-img-area">
+          <img src="{% static 'account/img/img-1.webp' %}" alt="">
+        </div>
+
+        <div class="item carousel-img-area">
+          <img src="{% static 'account/img/img-2.webp' %}" alt="">
+        </div>
+
+        <div class="item carousel-img-area">
+          <img src="{% static 'account/img/img-3.webp' %}" alt="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <section class="py-4">
+    <div class="container">
+      <h5 class="mb-3 section-title">Task Hall</h5>
+      <div class="row g-2">
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+
+
+        <div class="col-6">
+          <div class="single-item shadow">
+            <a href="">
+              <div class="item-img-area">
+                <img src="{% static 'account/img/logo-main.webp' %}" alt="">
+                <div class="lock-img">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-lock-fill svg-icon" viewBox="0 0 16 16">
+                    <path
+                      d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                  </svg>
+                </div>
+              </div>
+              <h6>Stage 1</h6>
+              <p class="unlock">Unlock amount</p>
+              <p class="price">$25.00</p>
+          </div>
+          </a>
+        </div>
+
+
+        
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="pb-4">
+    <div class="container">
+      <h5 class="mb-3 section-title">Member list</h5>
+
+      <div class="member-list-items" id="listItems">
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="pb-5 mb-5">
+    <div class="container" id="carousel2">
+      <h5 class="mb-3 section-title">Regulatory Authority</h5>
+
+      <div class="owl-carousel owl-theme">
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-1.webp' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-2.webp' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-3.webp' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-4.webp' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-5.webp' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'account/img/authority-6.webp' %}" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div class="container">
+
+
+    <nav class="bottom-navbar">
+      <div class="nav-item">
+        <a href="" {% if request.path == '/' %}class="active" {% endif %}>
+          <div class="icon"><i class="bi bi-house-door-fill"></i></div>
+          <p>Home</p>
+        </a>
+      </div>
+
+
+      <div class="nav-item">
+        <a href="">
+          <div class="icon"><i class="bi bi-list-task"></i></div>
+          <p>Tasks</p>
+        </a>
+      </div>
+
+
+      <div class="nav-item">
+        <a href="">
+          <div class="icon"><i class="bi bi-people-fill"></i></div>
+          <p>Team</p>
+        </a>
+      </div>
+
+
+      <div class="nav-item">
+        <a href="">
+          <div class="icon"><i class="bi bi-gem"></i></div>
+          <p>&nbsp;Vip&nbsp;</p>
+        </a>
+      </div>
+
+
+      <div class="nav-item">
+        <a href="{% url "profile" %}">
+          <div class="icon"><i class="bi bi-person-circle"></i></div>
+          <p>&nbsp;Me&nbsp;</p>
+        </a>
+      </div>
+
+
+
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <script src="{% static 'account/libs/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'account/libs/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'account/js/script.js' %}"></script>
+  <script>
+    $('#carousel1 .owl-carousel').owlCarousel({
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      responsiveBaseElement: 'body',
+      responsive: {
+        0: {
+          items: 1,
+        },
+        700: {
+          items: 1,
+        },
+        1220: {
+          items: 1,
+        },
+      },
+    });
+
+
+    $('#carousel2 .owl-carousel').owlCarousel({
+      items: 2,
+      loop: true,
+      margin: 20,
+      nav: false,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        700: {
+          items: 1,
+        },
+        1220: {
+          items: 1,
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

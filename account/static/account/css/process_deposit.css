@@ -1,0 +1,268 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    width: 100%;
+}
+
+
+header i {
+    color: black;
+}
+
+
+header .title {
+    font-size: 17px;
+    font-weight: 500;
+    width: 50%;
+    text-align: center;
+}
+
+header .back, header .last-space {
+    width: 25%;
+}
+
+.invoice-container {
+    margin-top: 1.5rem;
+    margin-bottom: 8rem;
+}
+
+.invoice {
+    background-color: #fff;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+
+.invoice .top-heading {
+    text-align: center;
+    padding: 0 15px;
+}
+
+
+
+.invoice .top-heading img {
+    width: 50px;
+}
+
+.invoice .top-heading h4 {
+    font-weight: bold;
+}
+
+.invoice .header-text {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+.invoice .top-heading .info {
+    font-size: 14px;
+}
+
+.invoice .main-invoice {
+    border: 1px solid #ddd7e2;
+}
+
+
+
+.invoice .awaiting {
+    background: linear-gradient(to bottom, #744da0, #55208a);
+    color: white;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice .awaiting.bg-success {
+    background: rgb(25, 135, 84) !important;
+}  
+
+.invoice .awaiting.bg-danger {
+    background: rgb(220, 53, 69);
+}
+
+.invoice .paying-with {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.invoice .paying-with .method {
+    display: flex;
+    
+}
+
+.invoice .paying-with .method .img-area {
+    width: 35px;
+}
+
+.invoice .paying-with .method .img-area img {
+    width: 100%;
+}
+
+.invoice .paying-with .method .currency {
+    line-height: 0.5rem;
+}
+
+.invoice .paying-with .method .currency h6 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.invoice .paying-with .method .currency small {
+    font-size: 11px;
+}
+
+#progressBar {
+  width: 100%; /* Set the width of the progress bar */
+  height: 5px; /* Set the height of the progress bar */
+  appearance: none; /* Remove the default styling */
+  border: none; /* Remove border */
+  background-color: #ddd7e2; /* Set the background color of the progress bar */
+  vertical-align: top;
+}
+
+
+#progressBar::-webkit-progress-bar {
+  background-color: #ddd7e2; /* Set background color of the progress bar for WebKit browsers */
+}
+
+#progressBar::-moz-progress-bar {
+  background-color: #ddd7e2; /* Set background color of the progress bar for Firefox */
+}
+
+#progressBar::-webkit-progress-value {
+  background-color: #744da0; /* Set the color of the progress */
+}
+
+#progressBar::-moz-progress-bar {
+  background-color: #744da0; /* Set the color of the progress for Firefox */
+}
+
+.progressbar-container {
+    height: 0;
+}
+
+.invoice .qr-code-container {
+    padding: 3rem;
+}
+
+.invoice .qr-code-area {
+    width: 280px;
+    height: 274.88;
+    padding: 20px;
+    border: 5px solid #ddd7e2;
+    border-radius: 5px;
+}
+
+
+.invoice .qr-code-area i {
+    font-size: 270px;
+    color: #005431;
+    text-shadow: 2px 2px 64px rgba(0, 84, 49, 0.4);
+}
+
+.invoice .qr-code-area i::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.invoice .invoice-details {
+    background-color: #ddd7e2;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.invoice .invoice-details .form-control {
+    background-color: transparent;
+}
+
+.invoice .invoice-details .first-row, .invoice .invoice-details .second-row, .invoice .invoice-details .third-row, .invoice .invoice-details .fourth-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.invoice .invoice-details .copy-btn {
+    color: #744da0;
+    transition: 0.3s;
+}
+
+.invoice .invoice-details .copy-btn:hover {
+    color: #55208a;
+}
+
+.invoice .invoice-details .copy-btn:focus, .copy-btn:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+.amount-due {
+    font-weight: 700;
+}
+
+
+.amount-due-value {
+    width: 150px !important;
+}
+
+
+.swal2-confirm {
+    background-color: #005431 !important; 
+    font-weight: 500 !important;
+    box-shadow: none !important;
+}
+
+
+.custom-file-input {
+    cursor: pointer !important;
+}
+
+
+.form-control:active, .form-control:focus {
+    box-shadow: none;
+    bottom: none;
+}
+
+#submitbtn, .return-btn {
+    background-color: #744da0;
+    text-transform: uppercase !important;
+    font-weight: 500;
+}
+
+
+.return-btn:active, .return-btn:hover {
+    background-color: #744da0 !important;
+    color: #fff;
+}
+
+.invoice .input-group {
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width:991px) {
+    .amount-due-btn  {
+        display: none;
+    }
+
+    .qr-code-area {
+        width: auto;
+    }
+}
+
+
+@media screen and (max-width:413px) {
+    .invoice .qr-code-container {
+        padding: 10px;
+        margin-bottom: 1.5rem;
+    }
+}

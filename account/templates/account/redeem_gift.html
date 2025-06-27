@@ -1,0 +1,109 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/redeem_gift.css' %}">
+{% endblock css %}
+{% block header %}
+<secction class="gift-backdrop">
+  <div class="gift-container">
+    <div class="gift-shadow"></div>
+    <div class="gift-box">
+      <div class="click"></div>
+    </div>
+    <div class="gift-text">
+    </div>
+  </div>
+</secction>
+
+
+
+
+
+<header class="header">
+    <nav class="top-navbar">
+  
+      <a class="logo-area" href="{% url 'home' %}">     
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </a>
+  
+    <div class="support-container" id="supportIcon">
+        <i class="bi bi-headset"></i> Support
+    </div>
+    </nav>
+  
+    <div class="header-text-container">
+      <h1 class="header-text">Redeem <span>gifts</span>
+    </div>
+  
+</header>
+{% endblock header %}
+{% block content %}
+<div class="redeem-gifts-container">
+    <div class="container">
+        <div class="redeem-gifts">
+            <p>Hello dear member! <br>We have a gift for you</p>
+            
+
+            <form class="mt-4" id="redeemGift" action="" method="post">
+              {% csrf_token %}
+                <p class="mb-2">Please enter the gift redemtion code below</p>
+                <input type="text" name="code" id="redemptionCode" placeholder="Please enter the redemption code" class="form-control code">
+                <button type="submit" class="btn btn-primary py-2 submit-btn" id="submitBtn">Receive</button>
+
+            </form>
+
+            <div class="mt-4">
+              <p class="gift-info mb-2">Follow the telegram channel and get in touch to participate and get free rewards</p>
+              
+              <a href="{{telegram_channel}}" target="_blank" class="telegram-link">
+                <i class="bi bi-telegram"></i>
+                <p class="mb-0 ms-3 py-2">Telegram Channel</p>
+              </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="gift-records">
+  <div class="container">
+    <div class="records">
+      <h6 class="d-flex align-items-center title"><i class="bi bi-journal-text me-2"></i> History</h6>
+
+      <div class="all-records mt-3">
+        {% for i in redemptions %}
+        <div class="shadow-sm single-record">
+          <div>
+            {{i.transaction_id}}
+          </div>
+
+          <div>
+            <soan class="badge rounded-pill gift py-2 px-3">+ ${{i.amount|floatformat:0}}</soan>
+          </div>
+
+          <div>
+            {{i.date|date:"d, M, Y"}}
+          </div>
+        </div>
+        {% empty %}
+        <div class="text-center empty">
+          <div class="no-records">
+            <img src="{% static 'account/img/no-records.webp' %}" alt="">
+            <p class="mt-2">no data</p>
+          </div>
+          <div class="space">
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'account/js/redeem_gift.js' %}"></script>
+{% endblock scripts %}

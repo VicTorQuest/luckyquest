@@ -1,0 +1,245 @@
+.header {
+    padding-bottom: 6rem;
+    position: relative;
+}
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+.user-info p {
+    margin-bottom: 0.1rem;
+    color: #212529;
+    position: relative;
+}
+
+
+.user-icon {
+    border: none;
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: #eceff4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.user-icon i {
+    font-size: 40px;
+    color: #744da0;
+}
+
+.user-account .change-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.user-account .username {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+
+.user-account .username .email, .user-account .username .phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.user-account .username p, .user-account .uid p {
+    margin-bottom: 0;
+}
+
+
+.user-account .uid i {
+    color: #744da0;
+}
+
+
+.user-account .uid i:hover {
+   cursor: pointer;
+}
+
+.user-account .username::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: .01333rem;
+    border-bottom: .01333rem solid #e6e8e8;
+    border-bottom-width: 0.01333rem;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 232, 232);
+    color: #e6e8e8;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+
+
+
+.user-account .uid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.user-account {
+    background: #fff;
+    position: absolute;
+    bottom: -9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    width: 95%;
+    border-radius: 1rem;
+}
+
+
+#emailModal .modal-content, #phoneModal .modal-content {
+    background-color: #fff;
+}
+
+#emailModal .modal-content .label, #phoneModal .modal-content .label {
+    display: flex;
+    align-items: center;
+    align-items: center;
+}
+
+#emailModal .modal-content .label  .user-icon,  #phoneModal .modal-content .label .user-icon{
+    width: 26px;
+    height: 26px;
+}
+
+#emailModal .modal-content .label i, #phoneModal .modal-content .label i {
+    font-size: 16px;
+}
+
+#emailModal .modal-content .label p, #phoneModal .modal-content .label p {
+    margin-bottom: 0;
+    margin-left: 1rem;
+    font-size: 18px;
+}
+
+
+#emailModal .modal-content #emailAddress , #phoneModal .modal-content #phoneNumber{
+    width: 100%;
+    padding: 15px 18px;
+    background-color: #eceff4;
+    color: #a6a6a6;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+}
+
+#emailModal .modal-content #emailAddress:focus,  #phoneModal .modal-content #phoneNumber:focus{
+    border: 1px solid #744da0;
+}
+
+.safety-information {
+    margin-top: 12rem;
+}
+
+.safety-information h5 {
+    padding: 0 10px;
+    border-left: 3px solid #55208a;
+}
+
+
+.safety-information .login-password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+
+.login-password .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-password .left p {
+    margin-bottom: 0;
+}
+
+.login-password  #review {
+    cursor: pointer;
+}
+
+.login-password .icon-area {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eceff4;
+    border-radius: 10px;
+}
+
+.login-password .icon-area i {
+    color: #744da0;
+    font-size: 22px;
+}
+
+
+.clear-cache {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+}
+
+
+.clear-cache .clear-cache-btn {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #744da0, #55208a);
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+
+.clear-cache .clear-cache-btn i {
+    font-size: 25px;
+}
+
+
+.clear-cache .clear-cache-btn:active {
+    filter: brightness(0.9);
+}
+
+

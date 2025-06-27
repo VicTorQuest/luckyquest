@@ -1,0 +1,138 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/customer_services.css' %}">
+{% endblock css %}
+{% block header %}
+<header class="header">
+    <nav class="top-navbar">
+  
+      <a class="logo-area" href="{% url 'home' %}">     
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </a>
+  
+    <div class="support-container" id="supportIcon">
+        <i class="bi bi-headset"></i> Support
+    </div>
+    </nav>
+  
+    <div class="header-text-container">
+      <h1 class="header-text">Customer <br><span>service</span>
+    </div>
+  
+  </header>
+{% endblock header %}
+{% block content %}
+<div class="cs-content">
+    <div class="container">
+        <div class="customer-services">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="bi bi-chat-text-fill me-2"></i> Live chat
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      You can get access to the live chat by simply clicking the chat/message icon at the bottom right corner of the screen, a support agent will attend to your messages once you send a text and the support team is alerted
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" id="depositIssue" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="bi bi-wallet-fill me-2"></i> Deposit not credited?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      redirecting...
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="bi bi-credit-card-2-front-fill me-2"></i>Withdrawal not received?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>If you have requested a withdrawal but have not yet received the funds, there could be several reasons for this.</p>
+                        <p>Withdrawal Pending, Withdrawal Processing, Withdrawal in Progress: These messages indicate that the bank is still processing the transaction. The withdrawal may be completed as quickly as within 1 minute, and the funds should be credited to your account within a maximum of 72 hours. Please be patient.</p>
+                        <p>Withdrawal Completed: If you requested a withdrawal on the same day and it has been submitted to the bank, with the bank confirming completion, there may be a delay in the funds reaching your account.</p>
+                        <p>Withdrawal Rejected: There could be various reasons for this. Please check the rejection reason. A withdrawal may be rejected due to a bank error, exceeding the time limit, or surpassing the bank's maximum transaction limit. You don’t need to worry; please apply for the withdrawal again.</p>
+                        <p class="text-danger">Important Notice: If you requested a withdrawal on the same day and received a completion notice, but the funds have not yet reached your bank account, there may be a delay. If more than 72 hours have passed and you still haven’t received the funds, there’s no need to worry. You can contact customer service and provide relevant bank information, PDF files, video proof, etc., to resolve the issue</p>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                          How do I copy the link to invite a friend
+                      </button>
+                    </h2>
+                    <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ol>
+                            <li>Log into your account</li>
+                            <li>Go to your <a href="{% url 'profile' %}">profile</a></li>
+                            <li>Click the 'share with a friend 'button</li>
+                            <li>Click the 'copy the invitation link' button</li>
+                            <li>After being notified "Copied", go to social media or the member you want to register</li>
+                            <li>Paste and send</li>
+                        </ol>
+                        <p>Q: Will i benefit from inviting members to join my team</p>
+                        <p>A: Yes, you will benefit from the members you invite.</p>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                        How to check referral commisions
+                      </button>
+                    </h2>
+                    <div id="collapsefive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>Q: How do i get commisions?</p>
+                        <p>A: You can copy the link to invite your friends to join. If they deposit to their account, you can receive a bonus. users will receive a commission for each transaction completed by the referral. The commission percentage depends on the membership level. The higher the membership level, the higher the bonus percentage. For more information, please check the invitation rules.</p>
+                        <p>Q: How do I get the commission in my account?</p>
+                        <p>A: You can view the commission bonus you received in the transaction menu of the account menu.</p>
+                    </div>
+                 </div>
+              </div>
+
+              
+        </div>
+    </div>
+</div>
+<div class="tip-container">
+    <div class="container">
+        <div class="tip">
+            <div class="title">
+                Tip
+            </div>
+
+
+            <p>If your deposit hasn't been processed yet, please use the self-service option above to submit your query. Our dedicated staffs will handle your issue promptly, ensuring a quicker resolution.</p>
+            <p class="text-danger">Please note <br>If your deposit hasn't been processed yet, please use the self-service option above to submit your query. Our dedicated staff will handle your issue promptly, ensuring a quicker resolution.</p>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    $('#depositIssue').on('click', function() {
+        window.location.href = "{% url 'deposit_issue' %}"
+    })
+</script>
+{% endblock scripts %}

@@ -1,0 +1,244 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/wallet.css' %}">
+{% endblock css %}
+{% block header %}
+<header class="header">
+    <nav class="top-navbar">
+        <div>
+            <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+        </div>
+
+        <div class="title">
+            Wallet
+        </div>
+
+        <h2 style="width: 25px;"></h2>
+    </nav>
+
+    <div class="wallet">
+        <div class="icon-area">
+            <i class="bi bi-wallet-fill"></i>
+        </div>
+        <span class="balance" id="balanceBg">${{request.user.wallet.balance|floatformat:2|intcomma}}</span>
+        <p class="mb-0"><small>balance</small></p>
+    </div>
+
+
+    <div class="wallet-info shadow">
+        <div class="container">
+            <div class="stats">
+                <div class="wallet-balances">
+                    <div class="balances">
+                        <div class="icon-area">
+                            <i class="bi bi-wallet-fill"></i>
+                        </div>
+                        <span class="balance mt-2" id="mainBalance">${{request.user.wallet.balance|floatformat:2|intcomma}}</span>
+                        <p class="mb-0"><small>main wallet</small></p>
+                    </div>
+
+
+                    <div class="balances">
+                        <div class="icon-area">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <span class="balance mt-2" id="referralBonus">${{request.user.referral.total_referral_bonus|floatformat:2|intcomma}}</span>
+                        <p class="mb-0"><small>referral bonus</small></p>
+                    </div>
+
+                </div>
+                <button class="btn w-100 mt-3 withdraw" id="withdrawBtn">One-click withdrawal</button>
+
+                <div class="account-statement w-100 mt-4">
+                    <div class="w-25 deposit-record">
+                        <a href="{% url 'deposit_history' %}">
+                            <div class="icon-area">
+                                <i class="bi bi-journal-text"></i>
+                            </div>
+                            <span>Deposit record</span>
+                        </a>
+                    </div>
+        
+                    <div class="w-25 deposit">
+                        <a href="{% url 'deposit' %}">
+                            <div class="icon-area">
+                                <i class="bi bi-credit-card-2-front"></i>
+                            </div>
+                            <span>Deposit</span>
+                        </a>
+                    </div>
+        
+                    <div class="w-25 withdraww">
+                        <a href="{% url 'withdrawal' %}">
+                            <div class="icon-area">
+                                <i class="bi bi-cash-stack"></i>
+                            </div>
+                            <span>Withdraw</span>   
+                        </a>
+                    </div>
+        
+                    <div class="w-25 withdrawal-record">
+                        <a href="{% url 'withdrawal_history' %}">
+                            <div class="icon-area">   
+                                <i class="bi bi-journal-text"></i>
+                            </div>
+                            <span>Withdraw record</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+{% endblock header %}
+{% block content %}
+<div class="records-container">
+    <div class="container">
+        <div class="deposit-report">
+            <h3 class="ms-2 mb-3">Recent deposits</h3>
+            {% if deposits %}
+            <div class="table-responsive">
+                <table class="table table-hover deposit-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for deposit in deposits %}
+                        <tr>
+                          <th>+${{deposit.amount|floatformat:2|intcomma}}</th>
+                          <td><span class="badge {{deposit.status}}">{{deposit.status}}</span></td>
+                          <td>{{deposit.date}}</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+            {% else %}
+            <div class="text-center empty">
+                <div class="no-records">
+                  <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                  <p class="mt-2 mb-0">no data</p>
+                </div>
+                <div class="space">
+      
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if deposits %}
+            <div class="px-2">
+                <a href="{% url 'deposit_history' %}" class="btn btn-outline-success w-100">View deposits</a>
+            </div>
+            {% endif %}
+            
+        </div>
+
+
+        <div class="withdrawal-report">
+            <h3 class="ms-2 mb-3">Recent withdrawals</h3>
+            {% if withdrawals %}
+            <div class="table-responsive">
+                <table class="table table-hover withdrawal-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for withdrawal in withdrawals %}
+                        <tr>
+                          <th>-${{withdrawal.amount|floatformat:2|intcomma}}</th>
+                          <td><span class="badge {{withdrawal.status}}">{{withdrawal.status}}</span></td>
+                          <td>{{withdrawal.date}}</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+            {% else %}
+            <div class="text-center empty">
+                <div class="no-records">
+                  <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                  <p class="mt-2 mb-0">no data</p>
+                </div>
+                <div class="space">
+      
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if withdrawals %}
+            <div class="px-2">
+                <a href="{% url 'withdrawal_history' %}" class="btn btn-outline-success w-100">View withdrawals</a>
+            </div>
+            {% endif %}
+            
+        </div>
+
+
+
+        <div class="transaction-report">
+            <h3 class="ms-2 mb-3">All transactions</h3>
+            {% if transactions %}
+            <div class="table-responsive">
+                <table class="table table-hover transaction-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Amount</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                          <th>{% if transaction.transaction_type == 'WITHDRAWAL' %}-{% else %}+{% endif %}${{transaction.amount|floatformat:2|intcomma}}</th>
+                          <td><span class="badge {{transaction.status}}">{{transaction.status}}</span></td>
+                          <td>{{transaction.date}}</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+            {% else %}
+            <div class="text-center empty">
+                <div class="no-records">
+                  <img src="{% static 'account/img/no-records.webp' %}" alt="">
+                  <p class="mt-2 mb-0">no data</p>
+                </div>
+                <div class="space">
+      
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if transactions %}
+            <div class="px-2">
+                <a href="{% url 'transaction_history' %}" class="btn btn-outline-success w-100">View transactions</a>
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script>
+    const referral_bonus = parseInt("{{request.user.referral.total_referral_bonus}}")
+</script>
+<script src="{% static "account/js/csrf.js" %}"></script>
+<script src="{% static "account/js/wallet.js" %}"></script>
+{% endblock scripts %}

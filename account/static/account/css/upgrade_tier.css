@@ -1,0 +1,175 @@
+.modal-content {
+    background-color: #fff;
+}
+
+.header {
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.class-benefit-container {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+}
+
+
+.class-benefit {
+    padding: 15px 8px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+
+.class-benefit h2 {
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+
+.class-benefit h2::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: .01333rem;
+    border-bottom: .01333rem solid #e6e8e8;
+    color: #e6e8e8;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+
+
+
+.class-benefit h2 .icon-area {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eceff4;
+}
+
+
+.class-benefit h2 .icon-area i {
+    color: #744da0;
+}
+
+
+.class-benefit .benefit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
+
+
+.class-benefit .benefit .icon-area {
+    width: 4rem;
+    height: 4rem;
+    padding: 15px;
+    border-radius: 10px;
+    background: #eceff4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.class-benefit .benefit .icon-area i {
+    font-size: 40px;
+    color: #744da0;
+}
+
+.class-benefit .benefit p {
+    border: .000667rem solid #bd9ddd;
+    border-radius: 8px;
+    padding-left: 0.4rem;
+    width: 100px;
+    font-size: 13.6px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.class-benefit .benefit p .mini-icons {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    background-color: #744da0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.class-benefit .benefit p .max-icons {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    background-color: #744da0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.class-benefit .benefit p i {
+    color: #fff;
+    font-size: 8px;
+}
+
+
+.class-benefit .benefit p .max-icons i {
+    font-size: 12px;
+}
+
+.class-benefit .benefit p i::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.class-benefit .benefit .text {
+    width: 100%;
+}
+
+.class-benefit .benefit .text h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+
+.class-benefit .benefit .text span {
+    font-size: 12.6px;
+    line-height: 0.3rem !important;
+}
+
+.upgrade-modal{
+    background-color: #744da0;
+}
+

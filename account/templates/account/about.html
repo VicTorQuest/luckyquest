@@ -1,0 +1,59 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'account/css/about.css' %}">
+{% endblock css %}
+{% block header %}
+<header class="header">
+    <nav class="top-navbar">
+  
+      <a class="logo-area" href="{% url 'home' %}">     
+        <div class="img-area me-1">
+          <img src="{% static 'account/img/logo.png' %}" alt="">
+        </div>
+        Luckyquestmall.com
+      </a>
+  
+    <div class="support-container" id="supportIcon">
+        <i class="bi bi-headset"></i> Support
+    </div>
+    </nav>
+  
+    <div class="header-text-container">
+      <h1 class="header-text"><span>About</span>
+    </div>
+</header>
+{% endblock header %}
+{% block content %}
+<div class="agreements-container">
+    <div class="container">
+        <div class="agreements">
+            <a href="{% url 'privacy_agreement' %}" class="shadow agreement">
+                <div class="left">
+                    <div class="icon-area">
+                        <i class="bi bi-journal-album"></i>
+                    </div>
+                    <p class="ms-2">Privacy Agreement</p>
+                </div>
+
+                <div>
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="{% url "risk_disclosure" %}" class="shadow agreement">
+                <div class="right">
+                    <div class="icon-area">
+                        <i class="bi bi-journal-bookmark-fill"></i>
+                    </div>
+                    <p class="ms-2">Risk Disclosure Agreement</p>
+                </div>
+
+                <div>
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

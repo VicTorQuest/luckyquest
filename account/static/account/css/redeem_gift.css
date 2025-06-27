@@ -1,0 +1,331 @@
+.gift-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+.gift-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 40%;
+}
+
+.gift-container:hover {
+    cursor: pointer;
+}
+
+
+.gift-container.active {
+    animation: Vibration 1s ease forwards;
+}
+
+
+@keyframes Vibration {
+    0% {
+        transform: scale(1,1);
+    }
+
+    24% {
+        transform: scale(.95,1.05);
+    }
+
+    50% {
+        transform: scale(1.1,.9);
+    }
+
+    75% {
+        transform: scale(.9,1.1);
+    }
+
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+
+
+
+.gift-container .gift-box {
+    position: absolute;
+    height: 100px;
+    width: 150px;
+    background: #6495ED;
+    animation: Bounce 4s ease infinite forwards;
+}
+
+
+@keyframes Bounce {
+    0% {
+        transform: translateY(-24px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-24px);
+    }
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 100px;
+    background: #744da0;
+    left: 62px;
+}
+
+
+
+.gift-box::after {
+    content: "";
+    position: absolute;
+    box-shadow: inset 0 10px rgba(0, 0, 0, .3);
+    width: 150px;
+    height: 100px;
+}
+
+
+.gift-box.active {
+    animation: none;
+}
+
+
+.click { 
+    position: absolute;
+    background: #6495ED;
+    width: 170px;
+    height: 45px;
+    top: -45px;
+    left: -10px;
+    z-index: 1;
+    transition: .5s ease;
+}
+
+.click.active {
+    transition-delay: 1s;
+    transform: translatey(-120px);
+}
+
+
+.click::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 45px;
+    background: #744da0;
+    left: 72px;
+    z-index: 2;
+}
+
+
+.click::after {
+    content: "";
+    position: absolute;
+    width: 2.5px;
+    height: 0;
+    border-bottom: 30px solid #744da0;
+    border-top: 30px solid #744da0;
+    border-left: 0px solid transparent;
+    border-right: 30px solid transparent;
+    transform: rotate(-90deg);
+    top: -46.5px;
+    left: 70px;
+    z-index: 3;
+}
+
+.gift-container .gift-shadow {
+    content: "";
+    position: relative;
+    width: 170px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    top: 50px;
+    border-radius: 50%;
+    left: -2px;
+    animation: BounceOut 4s ease infinite forwards;
+}
+
+
+.gift-container .gift-text {
+    position: absolute;
+    top: -10px;
+    width: 100px;
+    background: #6495ED;
+    padding: 10px;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+    border-radius: 10px;
+    z-index: -1;
+    scale: 0;
+    /* transform: translateY(-120px); */
+    transition: .5s ease;
+    transition-delay: 1.2s;
+}
+
+
+.gift-container .gift-text.active {
+    scale: 1;
+    transform: translateY(-120px);
+}
+
+
+@keyframes BounceOut {
+    0% {
+        transform: translateY(24px);
+        scale: .7;
+    }
+
+    50% {
+        transform: translateY(0px);
+        scale: 1;
+    }
+
+
+    100% {
+        transform: translateY(24px);
+        scale: .7;
+    }
+}
+
+
+.gift-container .gift-shadow.active {
+    animation: none;
+}
+
+
+
+
+
+
+
+.header {
+    
+    padding-bottom: 15px;
+}
+
+
+.top-navbar {
+    padding: 15px 8px;
+}
+
+
+.header-text-container::after {
+    content: "";
+    background: none;
+}
+
+
+.redeem-gifts-container {
+    margin-top: 2rem;
+}
+
+
+.redeem-gifts {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+.redeem-gifts .code {
+    background: #eceff4;
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+
+.redeem-gifts .code:active, .redeem-gifts .code:focus {
+    border: 0.5px solid #744da0;
+    box-shadow: none;
+}
+
+.redeem-gifts .submit-btn {
+    width: 100%;
+    border-radius: 18px;
+    margin-top: 1rem;
+}
+
+
+.redeem-gifts .gift-info {
+    line-height: 1rem;
+    font-size: 13px;
+    color: #818181;
+}
+
+
+.telegram-link {
+    text-decoration: none;
+    background: #0088CC;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.gift-records {
+    margin-top: 2rem;
+    margin-bottom: 5.5rem;
+}
+
+
+.gift-records .records {
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.records h6 i{
+    color: #744da0;
+}
+
+
+.all-records .single-record {
+    background: #fff;
+    padding: 12px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border: 0.1px solid rgba(129, 129, 129, 0.1);
+    font-size: 13px;
+}
+
+
+.all-records .single-record .gift {
+    background-color: #744da0;
+    color: #fff;
+}
+
+
+
+.no-records img{
+    width: 155px;
+}
+
+.empty .no-records {
+    margin-top: 2rem;
+}
+
+.empty .no-records, .empty .space {
+    height: 150px;
+}
+
+

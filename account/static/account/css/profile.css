@@ -1,0 +1,503 @@
+.loader {
+    opacity: 0.9;
+}
+
+
+.header {
+    padding-bottom: 6rem;
+    position: relative;
+}
+
+
+.share-content  {
+    background-color: #fff;
+    z-index: 2;
+}
+
+
+.share-content p {
+    color: #744da0;
+}
+
+.btn-close:active, .btn-close:focus {
+    box-shadow: none !important;
+}
+
+.share-content .modal-footer {
+    justify-content: center !important;
+}
+
+
+.modal-footer .social-item {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+.modal-footer .social-item a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-footer .social-item  p {
+    color: #212529;
+    margin: 0;
+}
+
+
+.copy-inv-link, .qr-code-link{
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.copy-inv-link {
+    background: linear-gradient(to bottom, #55208a, #744da0);
+    color: #fff;
+}
+
+.qr-code-link {
+    text-decoration: none;
+    display: block;
+    border: 1px solid #744da0;
+    color: #744da0;
+    width: 100%;
+}
+
+
+.copy-inv-link:hover, .qr-code-link:hover {
+    cursor: pointer;
+}
+
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1rem;
+}
+
+.user-info p {
+    margin-bottom: 0.1rem;
+    color: #fff;
+    position: relative;
+}
+
+.user-info p.username {
+    font-weight: 500;
+}
+
+.user-info .stage {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    padding: 3px 15px;
+    font-size: 13px;
+    width: fit-content;
+    border-radius: 8px;
+}
+
+
+.user-info .stage i:hover {
+    cursor: pointer;
+}
+
+.user-info .last-login span {
+    font-weight: 500;
+}
+
+.user-icon {
+    border: none;
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: #eceff4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.user-icon i {
+    font-size: 40px;
+    color: #744da0;
+}
+
+.user-account {
+    background: #fff;
+    position: absolute;
+    bottom: -6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    width: 95%;
+    border-radius: 1rem;
+}
+
+
+.account-balance {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.account-balance span.text {
+    color: #666666;
+}
+
+
+.account-balance .amount {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+    color: #000;
+}
+
+
+.account-statement {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.account-statement a, .history a {
+    text-decoration: none;
+    color: #222;
+}
+
+
+.account-statement .icon-area {
+    background: #744da0;
+    width: 55px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.account-statement span {
+    display: block;
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+
+.account-statement .icon-area i{
+    font-size: 28px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wallet, .deposit, .withdraw, .vip {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.histories {
+    margin-top: 7.5rem !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .history {
+    
+} */
+
+.history a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+
+.history a i {
+    color: #744da0;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history a h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+.history a span {
+    display: block;
+    font-size: 13px;
+    width: 100%;
+    padding: 0;
+    line-height: 15px;
+}
+
+
+.share-container {
+    margin-top: 2rem !important;
+}
+
+
+.share-with-friends {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #744da0, #55208a);
+    color: #ffffff;
+    height: 58px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.share-with-friends:hover {
+    cursor: pointer;
+}
+
+.share-with-friends .share-text {
+    font-size: 23px;
+    flex: 1;
+    font-weight: 300;
+}
+
+.share-with-friends .share-icon {
+    font-size: 30px;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #461a72;
+}
+
+.setting-panel-container {
+    margin-top: 2rem !important;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.setting-section {
+    border-bottom: .01333rem solid #e6e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.setting-section .left-side { 
+    display: flex;
+    align-items: center;
+}
+
+.setting-section .left-side span {
+    color: #212529;
+}
+
+.setting-section .left-side i {
+    color: #744da0;
+    font-size: 27px;
+}
+
+.setting-section .right-side span {
+    background: #55208a;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+
+.setting-section .right-side i {
+    color: #212529;
+}
+
+
+
+.service-center {
+    background: #fff;
+    margin-top: 2rem !important;
+}
+
+
+.service-center-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.service-center-items a {
+    text-decoration: none;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.service-center-items a i {
+    font-size: 30px;
+    color: #744da0;
+}
+
+
+.service-center-items a span {
+    font-size: 16px;
+    color: #212529;
+}
+
+
+
+.sign-out {
+    margin-bottom: 5rem;
+}
+
+
+
+.signout-btn {
+    border: 1px solid #888888;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #666666;
+    border-radius: 10px;
+}
+
+
+.invitation-container {
+    margin-top: 2rem !important;
+}
+
+.invitation {
+    background: #fff;
+    border-radius: 10px;
+}
+
+.copy-invitation-code .text {
+    display: flex;
+    align-items: center;
+}
+
+.copy-invitation-code i {
+    font-size: 27px;
+    color: #744da0;
+}
+
+.code-container {
+    background-color: #eceff4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    border-radius: 10px;
+}
+
+
+.code-container .inv-code {
+    font-family: 16px;
+    color: #55208a;
+    font-weight: 500;
+}
+
+
+.copy-icon {
+    background: linear-gradient(to right, #744da0, #55208a);
+    width: 82px;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+
+
+
+
+@media screen and (min-width:400px) {
+    .history a h3 {
+        margin-bottom: 2px;
+    }
+
+}
+
+@media screen and (max-width:400px) {
+    .share-content p {
+        font-size: 12px;
+    }
+
+
+    .history a h3 {
+        font-size: 13px;
+    }
+    
+    
+    .history a span {
+        font-size: 11.52px;
+    }
+
+    .username, .last-login {
+        font-size: 14px;
+        margin-bottom: 5px !important;
+    }
+
+    .stage {
+        font-size: 11px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .last-login {
+        font-size: 12px;
+        margin-bottom: 5px !important;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    .history a h3 {
+        font-size: 13px;
+    }
+    
+    .history a span {
+        font-size: 11.52px;
+    }
+
+    .service-center-items a span {
+        font-size: 11px;
+        text-align: center;
+    }
+
+
+    /* .social-item p {
+        font-size: 13px;
+    }
+
+    .social-item img {
+        width: 37px;
+    } */
+}
