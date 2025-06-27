@@ -63,10 +63,14 @@ def generate_qr_code(request):
 
 
 def home(request):
-    user = User.objects.get(username="admin@luckyquest.com")
-    social_link = WebsiteSocialLink.objects.get(host=user)
-    telegram_channel = social_link.telegram_channel
-    telegram_customer_service = social_link.telegram_customer_service
+    try:
+        user = User.objects.get(username="admin@luckyquest.com")
+        social_link = WebsiteSocialLink.objects.get(host=user)
+        telegram_channel = social_link.telegram_channel
+        telegram_customer_service = social_link.telegram_customer_service
+    except:
+        telegram_channel = 'https://t.me/luckyquest'
+        telegram_customer_service = 'https://t.me/luckyquestmallcom'
     return render(request, 'account/home.html', {
         'telegram_channel': telegram_channel,
         'telegram_customer_service': telegram_customer_service
